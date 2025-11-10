@@ -17,6 +17,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('is_admin');
+            $table->boolean('is_operator');
+            $table->boolean('is_mahasiswa');
+            $table->boolean('is_tata_usaha');
             $table->rememberToken();
             $table->timestamps();
         });
