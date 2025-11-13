@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DahsboardController;
+use App\Http\Controllers\TahunAkademikController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -25,4 +26,5 @@ Route::middleware(['auth', 'checkrole'])->group(function(){
     Route::resource('users', UserController::class);
     Route::get('/user/{id}/update-password',[UserController::class, 'showUpdatePasswordForm'])->name('users.showUpdatePasswordForm');
     Route::put('/user/{id}/update-password', [UserController::class, 'updatePassword'])->name('users.updatePassword');
+    Route::resource('tahunAkademik', TahunAkademikController::class);
 });

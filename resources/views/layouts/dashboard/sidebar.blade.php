@@ -38,6 +38,8 @@
                 </a>
             </li>
         </ul>
+
+        @if (Auth::user()->is_admin || Auth::user()->is_mahasiswa)
         {{-- <div class="pcoded-navigation-label">UI Element</div> --}}
         <ul class="pcoded-item pcoded-left-item">
             <li class="pcoded-hasmenu">
@@ -64,7 +66,8 @@
                 </ul>
             </li>
         </ul>
-
+        @endif
+        
         <ul class="pcoded-item pcoded-left-item">
             <li class="pcoded-hasmenu">
                 <a href="javascript:void(0)" class="waves-effect waves-dark">
@@ -129,7 +132,7 @@
         {{-- <div class="pcoded-navigation-label">Forms</div> --}}
         <ul class="pcoded-item pcoded-left-item">
             <li class="">
-                <a href="form-elements-component.html" class="waves-effect waves-dark">
+                <a href="{{ route('tahunAkademik.index') }}" class="waves-effect waves-dark">
                     <span class="pcoded-micon"><i class="fa-solid fa-calendar-days"></i></span>
                     <span class="pcoded-mtext">tahun akademik</span>
                     <span class="pcoded-mcaret"></span>
