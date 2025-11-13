@@ -1,10 +1,28 @@
 <?php
 
+use App\Http\Middleware\Checkrole;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DahsboardController;
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
-Route::get('/', [DahsboardController::class, 'index'])->name('dashboard');
+// Route::get('/', [DahsboardController::class, 'index'])->name('dashboard');
+
+
+Route::controller(LoginController::class)->group(function(){
+    Route::get('/', 'login')->name('login');
+    Route::post('/loginproses', 'loginproses')->name('loginproses');
+    Route::get('/logout', 'logout')->name('logout');
+    
+});
+
+Route::middleware(['auth', 'checkrole'])->group(function(){
+    Route::get('/admin', [DahsboardController::class, 'dashboard'])->name('dashboard');
+    Route::resource('users', UserController::class);
+    Route::get('/user/{id}/update-password',[UserController::class, 'showUpdatePasswordForm'])->name('users.showUpdatePasswordForm');
+    Route::put('/user/{id}/update-password', [UserController::class, 'updatePassword'])->name('users.updatePassword');
+});

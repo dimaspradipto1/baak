@@ -3,158 +3,61 @@
     <div class="pcoded-inner-navbar main-menu">
         <div class="">
             <div class="main-menu-header">
-                <img class="img-80 img-radius" src="{{ asset('dashboard/assets/images/avatar-4.jpg') }}"
-                    alt="User-Profile-Image">
+                <img class="img-80 img-radius" src="{{ asset('dashboard/assets/images/avatar-4.jpg') }}" alt="User-Profile-Image">
                 <div class="user-details">
-                    <span id="more-details">admin BAAK<i class="fa fa-caret-down"></i></span>
+                    <span id="more-details">{{ Auth::user()->name }}<i class="fa fa-caret-down"></i></span>
                 </div>
             </div>
-
             <div class="main-menu-content">
                 <ul>
                     <li class="more-details">
                         <a href="user-profile.html"><i class="ti-user"></i>View Profile</a>
                         <a href="#!"><i class="ti-settings"></i>Settings</a>
-                        <a href="auth-normal-sign-in.html"><i class="ti-layout-sidebar-left"></i>Logout</a>
+                        <a href="{{ route('logout') }}"><i class="ti-layout-sidebar-left"></i>Logout</a>
                     </li>
                 </ul>
             </div>
         </div>
-        <div class="p-15 p-b-0">
-            {{-- <form class="form-material">
+        {{-- <div class="p-15 p-b-0">
+            <form class="form-material">
                 <div class="form-group form-primary">
-                    <input type="text" name="footer-email" class="form-control"
-                        required="">
+                    <input type="text" name="footer-email" class="form-control">
                     <span class="form-bar"></span>
                     <label class="float-label"><i class="fa fa-search m-r-10"></i>Search
                         Friend</label>
                 </div>
-            </form> --}}
-        </div>
-        <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Layout</div>
+            </form>
+        </div> --}}
+        {{-- <div class="pcoded-navigation-label">Navigation</div> --}}
         <ul class="pcoded-item pcoded-left-item">
             <li class="active">
                 <a href="index.html" class="waves-effect waves-dark">
                     <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
-                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
+                    <span class="pcoded-mtext">Dashboard</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
             </li>
-            {{-- <li class="pcoded-hasmenu">
+        </ul>
+        {{-- <div class="pcoded-navigation-label">UI Element</div> --}}
+        <ul class="pcoded-item pcoded-left-item">
+            <li class="pcoded-hasmenu">
                 <a href="javascript:void(0)" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
-                    <span class="pcoded-mtext"
-                        data-i18n="nav.basic-components.main">Layanan Mahasiswa</span>
+                    <span class="pcoded-micon"><i class="fa-solid fa-users"></i></span>
+                    <span class="pcoded-mtext text-capitalize">layanan mahasiswa</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
                 <ul class="pcoded-submenu">
                     <li class=" ">
-                        <a href="accordion.html" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext"
-                                data-i18n="nav.basic-components.alert">Accordion</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                    <li class=" ">
                         <a href="breadcrumb.html" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext"
-                                data-i18n="nav.basic-components.breadcrumbs">Breadcrumbs</span>
+                            <span class="pcoded-mtext text-capitalize">surat keterangan aktif</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
                     <li class=" ">
                         <a href="button.html" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext"
-                                data-i18n="nav.basic-components.alert">Button</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                    <li class=" ">
-                        <a href="tabs.html" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext"
-                                data-i18n="nav.basic-components.breadcrumbs">Tabs</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                    <li class=" ">
-                        <a href="color.html" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext"
-                                data-i18n="nav.basic-components.alert">Color</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                    <li class=" ">
-                        <a href="label-badge.html" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext"
-                                data-i18n="nav.basic-components.breadcrumbs">Label Badge</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                    <li class=" ">
-                        <a href="tooltip.html" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext"
-                                data-i18n="nav.basic-components.alert">Tooltip</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                    <li class=" ">
-                        <a href="typography.html" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext"
-                                data-i18n="nav.basic-components.breadcrumbs">Typography</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                    <li class=" ">
-                        <a href="notification.html" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext"
-                                data-i18n="nav.basic-components.alert">Notification</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                    <li class=" ">
-                        <a href="icon-themify.html" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext"
-                                data-i18n="nav.basic-components.breadcrumbs">Themify</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-
-                </ul>
-            </li> --}}
-        </ul>
-
-        <ul class="pcoded-item pcoded-left-item">
-            <li class="pcoded-hasmenu">
-                <a href="javascript:void(0)" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="fa-solid fa-user-graduate"></i></span>
-                    <span class="pcoded-mtext"
-                        data-i18n="nav.basic-components.main">Layanan Mahasiswa</span>
-                    <span class="pcoded-mcaret"></span>
-                </a>
-                <ul class="pcoded-submenu">
-                    <li class=" ">
-                        <a href="accordion.html" class="waves-effect waves-dark text-capitalize">
-                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext"
-                                data-i18n="nav.basic-components.alert">surat aktif kuliah</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                    <li class=" ">
-                        <a href="breadcrumb.html" class="waves-effect waves-dark text-capitalize">
-                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext"
-                                data-i18n="nav.basic-components.breadcrumbs">formulir layanan akademik</span>
+                            <span class="pcoded-mtext text-capitalize">surat layanan akademik</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
@@ -166,172 +69,130 @@
             <li class="pcoded-hasmenu">
                 <a href="javascript:void(0)" class="waves-effect waves-dark">
                     <span class="pcoded-micon"><i class="fa-solid fa-folder-open"></i></span>
-                    <span class="pcoded-mtext"
-                        data-i18n="nav.basic-components.main">arsip</span>
+                    <span class="pcoded-mtext text-capitalize">arsip</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
                 <ul class="pcoded-submenu">
                     <li class=" ">
-                        <a href="accordion.html" class="waves-effect waves-dark text-capitalize">
+                        <a href="breadcrumb.html" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext"
-                                data-i18n="nav.basic-components.alert">LPJ kepanitian</span>
+                            <span class="pcoded-mtext text-capitalize">LPJ kepanitiaan</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
                     <li class=" ">
-                        <a href="breadcrumb.html" class="waves-effect waves-dark text-capitalize">
+                        <a href="button.html" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext"
-                                data-i18n="nav.basic-components.breadcrumbs">ijazah dan transkip</span>
+                            <span class="pcoded-mtext text-capitalize">ijazah dan transkrip nilai</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
                     <li class=" ">
-                        <a href="breadcrumb.html" class="waves-effect waves-dark text-capitalize">
+                        <a href="button.html" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext"
-                                data-i18n="nav.basic-components.breadcrumbs">wasdalbin</span>
+                            <span class="pcoded-mtext text-capitalize">wasdalbin</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
                     <li class=" ">
-                        <a href="breadcrumb.html" class="waves-effect waves-dark text-capitalize">
+                        <a href="button.html" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext"
-                                data-i18n="nav.basic-components.breadcrumbs">SOP akademik</span>
+                            <span class="pcoded-mtext text-capitalize">kurikulum prodi</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
                     <li class=" ">
-                        <a href="breadcrumb.html" class="waves-effect waves-dark text-capitalize">
+                        <a href="button.html" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext"
-                                data-i18n="nav.basic-components.breadcrumbs">SK</span>
+                            <span class="pcoded-mtext text-capitalize">pedoman</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li class=" ">
+                        <a href="button.html" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext text-capitalize">SOP akademik</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
+                    <li class=" ">
+                        <a href="button.html" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                            <span class="pcoded-mtext text-capitalize">SK</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
                 </ul>
             </li>
         </ul>
-        
-       
-        {{-- <ul class="pcoded-item pcoded-left-item">
-            <li>
+
+        {{-- <div class="pcoded-navigation-label">Forms</div> --}}
+        <ul class="pcoded-item pcoded-left-item">
+            <li class="">
                 <a href="form-elements-component.html" class="waves-effect waves-dark">
                     <span class="pcoded-micon"><i class="fa-solid fa-calendar-days"></i></span>
-                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">tahun akademik</span>
+                    <span class="pcoded-mtext">tahun akademik</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
             </li>
-            <li>
-                <a href="bs-basic-table.html" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="fa-solid fa-users"></i></span>
-                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">pengguna</span>
+        </ul>
+        {{-- <div class="pcoded-navigation-label">Tables</div> --}}
+        <ul class="pcoded-item pcoded-left-item">
+            <li class="">
+                <a href="{{ route('users.index') }}" class="waves-effect waves-dark">
+                    <span class="pcoded-micon"><i class="fa-solid fa-users-gear"></i></span>
+                    <span class="pcoded-mtext text-capitalize">pengguna</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
             </li>
-        </ul> --}}
-
-        {{-- <div class="pcoded-navigation-label" data-i18n="nav.category.forms">Chart &amp; Maps</div> --}}
+        </ul>
+        {{-- <div class="pcoded-navigation-label">Chart And Maps</div> --}}
         {{-- <ul class="pcoded-item pcoded-left-item">
-            <li>
-                <a href="chart.html" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">Chart</span>
+            <li class="">
+                <a href="chart-morris.html" class="waves-effect waves-dark">
+                    <span class="pcoded-micon"><i class="ti-bar-chart-alt"></i><b>C</b></span>
+                    <span class="pcoded-mtext">Charts</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
             </li>
-            <li>
+            <li class="">
                 <a href="map-google.html" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-                    <span class="pcoded-mtext" data-i18n="nav.form-components.main">Maps</span>
+                    <span class="pcoded-micon"><i class="ti-map-alt"></i><b>M</b></span>
+                    <span class="pcoded-mtext">Maps</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
             </li>
-            <li class="pcoded-hasmenu">
-                <a href="javascript:void(0)" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
-                    <span class="pcoded-mtext" data-i18n="nav.basic-components.main">Pages</span>
-                    <span class="pcoded-mcaret"></span>
-                </a>
-                <ul class="pcoded-submenu">
-                    <li class=" ">
-                        <a href="auth-normal-sign-in.html" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext"
-                                data-i18n="nav.basic-components.alert">Login</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                    <li class=" ">
-                        <a href="auth-sign-up.html" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext"
-                                data-i18n="nav.basic-components.breadcrumbs">Register</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                    <li class=" ">
-                        <a href="sample-page.html" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext"
-                                data-i18n="nav.basic-components.breadcrumbs">Sample Page</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
         </ul> --}}
-
-        {{-- <div class="pcoded-navigation-label" data-i18n="nav.category.other">Other</div> --}}
+        {{-- <div class="pcoded-navigation-label">Pages</div> --}}
         {{-- <ul class="pcoded-item pcoded-left-item">
             <li class="pcoded-hasmenu ">
                 <a href="javascript:void(0)" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="ti-direction-alt"></i><b>M</b></span>
-                    <span class="pcoded-mtext" data-i18n="nav.menu-levels.main">Menu Levels</span>
+                    <span class="pcoded-micon"><i class="ti-id-badge"></i><b>A</b></span>
+                    <span class="pcoded-mtext">Pages</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
                 <ul class="pcoded-submenu">
                     <li class="">
-                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                        <a href="auth-normal-sign-in.html" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext"
-                                data-i18n="nav.menu-levels.menu-level-21">Menu Level 2.1</span>
+                            <span class="pcoded-mtext">Login</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
-                    </li>
-                    <li class="pcoded-hasmenu ">
-                        <a href="javascript:void(0)" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-direction-alt"></i></span>
-                            <span class="pcoded-mtext"
-                                data-i18n="nav.menu-levels.menu-level-22.main">Menu Level
-                                2.2</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                        <ul class="pcoded-submenu">
-                            <li class="">
-                                <a href="javascript:void(0)" class="waves-effect waves-dark">
-                                    <span class="pcoded-micon"><i
-                                            class="ti-angle-right"></i></span>
-                                    <span class="pcoded-mtext"
-                                        data-i18n="nav.menu-levels.menu-level-22.menu-level-31">Menu
-                                        Level 3.1</span>
-                                    <span class="pcoded-mcaret"></span>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                     <li class="">
-                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+                        <a href="auth-sign-up.html" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext"
-                                data-i18n="nav.menu-levels.menu-level-23">Menu Level 2.3</span>
+                            <span class="pcoded-mtext">Registration</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
-
+                    <li class="">
+                        <a href="sample-page.html" class="waves-effect waves-dark">
+                            <span class="pcoded-micon"><i class="ti-layout-sidebar-left"></i><b>S</b></span>
+                            <span class="pcoded-mtext">Sample Page</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>
+                    </li>
                 </ul>
             </li>
         </ul> --}}
