@@ -67,7 +67,8 @@
             </li>
         </ul>
         @endif
-        
+
+        @if (Auth::user()->is_admin || Auth::user()->is_tata_usaha || Auth::user()->is_operator)
         <ul class="pcoded-item pcoded-left-item">
             <li class="pcoded-hasmenu">
                 <a href="javascript:void(0)" class="waves-effect waves-dark">
@@ -128,7 +129,9 @@
                 </ul>
             </li>
         </ul>
+        @endif
 
+        @if (Auth::user()->is_admin )
         {{-- <div class="pcoded-navigation-label">Forms</div> --}}
         <ul class="pcoded-item pcoded-left-item">
             <li class="">
@@ -149,6 +152,7 @@
                 </a>
             </li>
         </ul>
+        @endif
         {{-- <div class="pcoded-navigation-label">Chart And Maps</div> --}}
         {{-- <ul class="pcoded-item pcoded-left-item">
             <li class="">
