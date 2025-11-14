@@ -14,16 +14,14 @@ return new class extends Migration
         Schema::create('mahasiswas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('users_id')->constrained()->cascadeOnDelete();
-            $table->string('nama_lengkap');
-            $table->string('tempat_lahir');
-            $table->date('tgl_lahir');
-            $table->string('npm');
-            $table->string('program_studi');
-            $table->string('jenjang_pendidikan');
-            $table->string('tahun');
-            $table->string('semester');
-            $table->text('alamat');
-            $table->string('no_wa');
+            $table->string('tempat_lahir')->nullable();
+            $table->date('tgl_lahir')->nullable();
+            $table->string('npm')->nullable();
+            $table->string('program_studi')->nullable();
+            $table->string('jenjang_pendidikan')->nullable();
+            $table->string('semester')->nullable();
+            $table->text('alamat')->nullable();
+            $table->string('no_wa')->nullable();
             $table->timestamps();
         });
     }
