@@ -154,16 +154,18 @@
         </ul>
         <ul class="pcoded-item pcoded-left-item">
             <li class="">
-                <a href="{{ route('mahasiswa.index') }}" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="fa-solid fa-users-gear"></i></span>
-                    <span class="pcoded-mtext text-capitalize">mahasiswa</span>
-                    <span class="pcoded-mcaret"></span>
-                </a>
-            </li>
-            <li class="">
                 <a href="{{ route('programStudi.index') }}" class="waves-effect waves-dark">
                     <span class="pcoded-micon"><i class="fa-solid fa-folder-closed"></i></span>
                     <span class="pcoded-mtext text-capitalize">program studi</span>
+                    <span class="pcoded-mcaret"></span>
+                </a>
+            </li>
+        </ul>
+        <ul class="pcoded-item pcoded-left-item">
+            <li class="">
+                <a href="{{ route('mahasiswa.index') }}" class="waves-effect waves-dark">
+                    <span class="pcoded-micon"><i class="fa-solid fa-users-gear"></i></span>
+                    <span class="pcoded-mtext text-capitalize">mahasiswa</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
             </li>

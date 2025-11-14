@@ -12,4 +12,9 @@ class Mahasiswa extends Model
     {
         return $this->belongsTo(User::class, 'users_id'); // Menambahkan relasi yang benar
     }
+
+    public function programStudi()
+    {
+        return $this->belongsTo(ProgramStudi::class); // Memastikan relasi ke ProgramStudi
+    }
 }

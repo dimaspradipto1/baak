@@ -26,8 +26,8 @@
                     width: '30%'
                 },
                 {
-                    data: 'program_studi',
-                    name: 'program_studi',
+                    data: 'programStudi.nama_program_studi',
+                    name: 'programStudi.nama_program_studi',
                     width: '20%'
                 },
                 {

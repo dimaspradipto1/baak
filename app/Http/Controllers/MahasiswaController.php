@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Mahasiswa;
+use App\Models\ProgramStudi;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\Facades\DataTables;
@@ -17,20 +18,20 @@ class MahasiswaController extends Controller
     {
         if (request()->ajax()) {
             // Memuat data Mahasiswa beserta relasi User
-            $query = Mahasiswa::with('user')->get(); 
+            $query = Mahasiswa::with('user', 'programStudi')->get(); 
     
             return DataTables::of($query)
                 ->addIndexColumn()
                 ->addColumn('user.name', function ($item) {
-                    // Cek apakah relasi user ada
-                    return $item->user ? $item->user->name : 'Tidak Ada'; 
+                    // Cek apakah relasi user 
+                    return $item->user ? $item->user->name : '-'; 
                 })
                 ->addColumn('user.email', function ($item) {
                     // Cek apakah relasi user ada
-                    return $item->user ? $item->user->email : 'Tidak Ada'; 
+                    return $item->user ? $item->user->email : '-'; 
                 })
-                ->addColumn('program_studi', function ($item) {
-                    return $item->program_studi;
+                ->addColumn('programStudi.nama_program_studi', function ($item) {
+                    return $item->programStudi ? $item->programStudi->nama_program_studi : '-';
                 })
                 ->addColumn('action', function ($item) {
                     return '
@@ -43,7 +44,7 @@ class MahasiswaController extends Controller
                         </form>
                     ';
                 })
-                ->rawColumns(['action', 'user.name', 'user.email', 'program_studi', 'detail'])
+                ->rawColumns(['action', 'user.name', 'user.email', 'programStudi.nama_program_studi', 'detail'])
                 ->make();
         }
         return view('pages.mahasiswa.index');
@@ -56,8 +57,9 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
+        $programStudi = ProgramStudi::all();
         $users = User::all();
-        return view('pages.mahasiswa.create', compact('users'));
+        return view('pages.mahasiswa.create', compact('users', 'programStudi'));
     }
 
     /**
@@ -70,7 +72,7 @@ class MahasiswaController extends Controller
             'tempat_lahir' => $request->tempat_lahir,
             'tgl_lahir' => $request->tgl_lahir,
             'npm' => $request->npm,
-            'program_studi' => $request->program_studi,
+            'program_studi_id' => $request->program_studi_id,
             'jenjang_pendidikan' => $request->jenjang_pendidikan,
             'semester' => $request->semester,
             'alamat' => $request->alamat,
