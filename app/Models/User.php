@@ -24,7 +24,8 @@ class User extends Authenticatable
         'is_admin',
         'is_operator',
         'is_tata_usaha',
-        'is_mahasiswa'
+        'is_mahasiswa',
+        'is_approval',
     ];
 
     /**
@@ -54,4 +55,5 @@ class User extends Authenticatable
     {
         return $this->hasOne(Mahasiswa::class);
     }
+
 }

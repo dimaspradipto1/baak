@@ -15,34 +15,42 @@ class UserController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        if (request()->ajax()) {
-            $query = User::query();
+{
+    if (request()->ajax()) {
+        $query = User::query();
 
-            return DataTables::of($query)
-                ->addIndexColumn()
-                ->addColumn('name', function ($item) {
-                    return $item->name;
-                })
-                ->addColumn('email', function ($item) {
-                    return $item->email;
-                })
-                ->addColumn('status', function ($item) {
-                    $status = '';
-        
-                    if ($item->is_admin) {
-                        $status = 'Admin';
-                    } elseif ($item->is_operator) {
-                        $status = 'Operator';
-                    } elseif ($item->is_mahasiswa) {
-                        $status = 'Mahasiswa';
-                    } elseif ($item->is_tata_usaha) {
-                        $status = 'Tata Usaha';
-                    }
-        
-                    return $status;
-                })
-                ->addColumn('action', function ($item) {
+        return DataTables::of($query)
+            ->addIndexColumn()
+            ->addColumn('name', function ($item) {
+                return $item->name;
+            })
+            ->addColumn('email', function ($item) {
+                return $item->email;
+            })
+            ->addColumn('status', function ($item) {
+                $statuses = [];
+
+                // Cek setiap status dan tambahkan ke array jika statusnya aktif
+                if ($item->is_admin) {
+                    $statuses[] = 'Admin';
+                }
+                if ($item->is_operator) {
+                    $statuses[] = 'Operator';
+                }
+                if ($item->is_mahasiswa) {
+                    $statuses[] = 'Mahasiswa';
+                }
+                if ($item->is_tata_usaha) {
+                    $statuses[] = 'Tata Usaha';
+                }
+                if ($item->is_approval) {
+                    $statuses[] = 'Approval';
+                }
+
+                // Gabungkan semua status yang ada, dipisahkan dengan koma
+                return implode(', ', $statuses);
+            })
+            ->addColumn('action', function ($item) {
                 return '
                     <a href="'.route('users.updatePassword', $item->id).'" class="btn btn-sm btn-primary text-white px-3" title="update password"><i class="fa-solid fa-key"></i></a>
                     <a href="' . route('users.edit', $item->id) . '" class="btn btn-sm btn-warning text-white px-3 rounded" title="edit"><i class="fa-solid fa-pen-to-square"></i></a> 
@@ -52,12 +60,13 @@ class UserController extends Controller
                     <button type="submit" class="btn btn-danger btn-sm px-3 rounded" title="hapus"><i class="fa-solid fa-trash-can" ></i></button>
                     </form>
                 ';
-                    })
-                    ->rawColumns(['action', 'status'])
-                    ->make();
-        }
-        return view('pages.users.index');
+            })
+            ->rawColumns(['action', 'status'])
+            ->make();
     }
+    return view('pages.users.index');
+}
+
 
     /**
      * Show the form for creating a new resource.
@@ -119,6 +128,7 @@ class UserController extends Controller
             'is_mahasiswa' => $request->has('is_mahasiswa') ? 1 : 0,
             'is_operator' => $request->has('is_operator') ? 1 : 0,
             'is_tata_usaha' => $request->has('is_tata_usaha') ? 1 : 0,
+            'is_approval' => $request->has('is_approval') ? 1 : 0,
         ]);
 
         $updateData = [
@@ -135,7 +145,7 @@ class UserController extends Controller
         Alert::success('success', 'data updated successfully')->autoclose(2000)->toToast();
         return redirect(route('users.index'));
     }
-
+    
     /**
      * Remove the specified resource from storage.
      */

@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('surat_akademiks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('mahasiswas_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('approvals_id')->constrained()->cascadeOnDelete();
             $table->foreignId('tahun_akademiks_id')->constrained()->cascadeOnDelete();
             $table->string('cuti_belumcuti');
             $table->string('permohonan');

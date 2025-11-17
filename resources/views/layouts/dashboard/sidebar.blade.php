@@ -170,6 +170,15 @@
                 </a>
             </li>
         </ul>
+        <ul class="pcoded-item pcoded-left-item">
+            <li class="">
+                <a href="{{ route('approval.index') }}" class="waves-effect waves-dark">
+                    <span class="pcoded-micon"><i class="fa-solid fa-check-circle"></i></span>
+                    <span class="pcoded-mtext text-capitalize">approval</span>
+                    <span class="pcoded-mcaret"></span>
+                </a>
+            </li>
+        </ul>
         @endif
         {{-- <div class="pcoded-navigation-label">Chart And Maps</div> --}}
         {{-- <ul class="pcoded-item pcoded-left-item">

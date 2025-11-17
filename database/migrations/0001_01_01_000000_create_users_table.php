@@ -21,6 +21,7 @@ return new class extends Migration
             $table->boolean('is_operator');
             $table->boolean('is_mahasiswa');
             $table->boolean('is_tata_usaha');
+            $table->boolean('is_approval');
             $table->rememberToken();
             $table->timestamps();
         });

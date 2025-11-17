@@ -50,6 +50,10 @@
                                     <input type="checkbox" class="form-check-input" name="is_tata_usaha" id="is_tata_usaha" {{ $user->is_tata_usaha ? 'checked' : '' }}>
                                     <label class="form-check-label" for="is_tata_usaha">Tata Usaha</label>
                                 </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="is_approval" id="is_approval" {{ $user->is_approval ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="is_approval">Approval</label>
+                                </div>
                             </div>
                         </div>
 
