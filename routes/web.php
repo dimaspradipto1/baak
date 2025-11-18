@@ -8,6 +8,7 @@ use App\Http\Controllers\DahsboardController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ProgramStudiController;
 use App\Http\Controllers\TahunAkademikController;
+use App\Http\Controllers\PegawaiController;
 
 Route::controller(LoginController::class)->group(function(){
     Route::get('/', 'login')->name('login');
@@ -24,4 +25,5 @@ Route::middleware(['auth', 'checkrole'])->group(function(){
     Route::resource('tahunAkademik', TahunAkademikController::class);
     Route::resource('mahasiswa', MahasiswaController::class);
     Route::resource('programStudi', ProgramStudiController::class);
+    Route::resource('pegawai', PegawaiController::class);
 });

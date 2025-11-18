@@ -15,8 +15,8 @@
                     class: 'text-center'
                 },
                 {
-                    data: 'user.name',
-                    name: 'user.name',
+                    data: 'users.name',
+                    name: 'users.name',
                     width: '40%'
                 },
 
@@ -28,6 +28,11 @@
                 {
                     data: 'nidn',
                     name: 'nidn',
+                    width: '20%'
+                },
+                {
+                    data: 'url',
+                    name: 'url',
                     width: '20%'
                 },
                 {
@@ -45,7 +50,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <a href="{{ route('approval.create') }}" class="btn btn-primary rounded btn-sm"><i class="fa-solid fa-plus"></i> Tambah</a>
+        <a href="{{ route('pegawai.create') }}" class="btn btn-primary rounded btn-sm"><i class="fa-solid fa-plus"></i> Tambah</a>
         <div class="card-header-right">
             <ul class="list-unstyled card-option">
                 <li><i class="fa fa fa-wrench open-card-option"></i></li>
@@ -65,6 +70,7 @@
                         <th>NAMA</th>
                         <th>JABATAN</th>
                         <th>NIDN</th>
+                        <th>TTD</th>
                         <th>AKSI</th>
                     </tr>
                 </thead>
