@@ -6,13 +6,13 @@
             <!-- Basic Form Inputs card start -->
             <div class="card">
                 <div class="card-header">
-                    <h5>Form Mahasiswa</h5>
+                    <h5>Form Surat Aktif</h5>
                 </div>
                 <div class="card-block">
                     <h4 class="sub-title">Form Inputs</h4>
-                    <form action="{{ route('mahasiswa.store') }}" method="POST">
+                    <form action="{{ route('suratAktif.store') }}" method="POST">
                         @csrf
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Nama Mahasiswa</label>
                             <div class="col-sm-10">
                                 <select name="users_id" id="users_id" class="form-control rounded" data-live-search="true">
@@ -23,7 +23,7 @@
                                 </select>
                             </div>
                         </div>
-                        
+                         --}}
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Tempat Lahir</label>
                             <div class="col-sm-10">
@@ -61,19 +61,6 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Fakultas</label>
-                            <div class="col-sm-10">
-                               <select name="fakultas" id="fakultas" class="form-control rounded">
-                                <option selected disabled>Pilih Fakultas</option>
-                                <option disabled>=================================</option>
-                                <option value="Fakultas Sains dan Teknologi">Fakultas Sains dan Teknologi</option>
-                                <option value="Fakultas Ekonomi dan Bisnis">Fakultas Ekonomi dan Bisnis</option>
-                                <option value="Fakultas Ilmu Kesehatan">Fakultas Ilmu Kesehatan</option>
-                               </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Jenjang Pendidikan</label>
                             <div class="col-sm-10">
                                <select name="jenjang_pendidikan" id="jenjang_pendidikan" class="form-control rounded">
@@ -86,39 +73,15 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Semester</label>
+                            <label class="col-sm-2 col-form-label">Fakultas</label>
                             <div class="col-sm-10">
-                               <select name="semester" id="semester" class="form-control rounded">
-                                <option selected disabled>Pilih Semester</option>
-                                <option disabled>=========================================</option>
-                                <option value="I (Satu)">I (Satu)</option>
-                                <option value="II (Dua)">II (Dua)</option>
-                                <option value="III (Tiga)">III (Tiga)</option>
-                                <option value="IV (Empat)">IV (Empat)</option>
-                                <option value="V (Lima)">V (Lima)</option>
-                                <option value="VI (Enam)">VI (Enam)</option>
-                                <option value="VII (Tujuh)">VII (Tujuh)</option>
-                                <option value="VIII (Delapan)">VIII (Delapan)</option>
-                                <option value="IX (Sembilan)">IX (Sembilan)</option>
-                                <option value="X (Sepuluh)">X (Sepuluh)</option>
-                                <option value="XI (Sebelas)">XI (Sebelas)</option>
-                                <option value="XII (Dua Belas)">XII (Dua Belas)</option>
+                               <select name="fakultas" id="fakultas" class="form-control rounded">
+                                <option selected disabled>Pilih Fakultas</option>
+                                <option disabled>=================================</option>
+                                <option value="Fakultas Sains dan Teknologi">Fakultas Sains dan Teknologi</option>
+                                <option value="Fakultas Ekonomi dan Bisnis">Fakultas Ekonomi dan Bisnis</option>
+                                <option value="Fakultas Ilmu Kesehatan">Fakultas Ilmu Kesehatan</option>
                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Alamat</label>
-                            <div class="col-sm-10">
-                                <textarea name="alamat" class="form-control rounded">{{ old('alamat') }}</textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">NO WA</label>
-                            <div class="col-sm-10">
-                                <input type="number" name="no_wa" value="{{ old('no_wa') }}"
-                                    class="form-control rounded" placeholder="Masukkan no WA">
                             </div>
                         </div>
 
@@ -126,7 +89,7 @@
                         <button type="submit" class="btn btn-primary rounded text-uppercase btn-sm">
                             <i class="fa-solid fa-save"></i> Submit
                         </button>
-                        <a href="{{ route('mahasiswa.index') }}" class="btn btn-danger rounded text-uppercase btn-sm">
+                        <a href="{{ route('suratAktif.index') }}" class="btn btn-danger rounded text-uppercase btn-sm">
                             <i class="fa-solid fa-arrow-left"></i> Back
                         </a>
                     </form>

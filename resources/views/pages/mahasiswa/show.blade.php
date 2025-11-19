@@ -16,39 +16,24 @@
                             <td width="79%">{{ $mahasiswa->user->name }}</td>
                         </tr>
                         <tr>
-                            <td width="20%">Program Studi</td>
-                            <td width="1%">:</td>
-                            <td width="79%">{{ $mahasiswa->program_studi }}</td>
-                        </tr>
-                        <tr>
-                            <td width="20%">Alamat</td>
-                            <td width="1%">:</td>
-                            <td width="79%">{{ $mahasiswa->alamat }}</td>
-                        </tr>
-                        <tr>
-                            <td width="20%">No WA</td>
-                            <td width="1%">:</td>
-                            <td width="79%">{{ $mahasiswa->no_wa }}</td>
-                        </tr>
-                        <tr>
-                            <td width="20%">Tanggal Lahir</td>
-                            <td width="1%">:</td>
-                            <td width="79%">{{ $mahasiswa->tgl_lahir }}</td>
-                        </tr>
-                        <tr>
-                            <td width="20%">Tempat Lahir</td>
-                            <td width="1%">:</td>
-                            <td width="79%">{{ $mahasiswa->tempat_lahir }}</td>
-                        </tr>
-                        <tr>
                             <td width="20%">NPM</td>
                             <td width="1%">:</td>
                             <td width="79%">{{ $mahasiswa->npm }}</td>
                         </tr>
                         <tr>
+                            <td width="20%">Tempat/Tgl Lahir</td>
+                            <td width="1%">:</td>
+                            <td width="79%">{{ $mahasiswa->tempat_lahir }} / {{ \Carbon\Carbon::parse($mahasiswa->tgl_lahir)->format('d F Y') }}</td>
+                        </tr>
+                        <tr>
                             <td width="20%">Program Studi</td>
                             <td width="1%">:</td>
-                            <td width="79%">{{ $mahasiswa->program_studi }}</td>
+                            <td width="79%">{{ $mahasiswa->programStudi->nama_program_studi }}</td>
+                        </tr>
+                        <tr>
+                            <td width="20%">Fakultas</td>
+                            <td width="1%">:</td>
+                            <td width="79%">{{ $mahasiswa->fakultas }}</td>
                         </tr>
                         <tr>
                             <td width="20%">Jenjang Pendidikan</td>
@@ -72,9 +57,6 @@
                         </tr>
                     </table>
                    
-                    <button type="submit" class="btn btn-primary rounded text-uppercase btn-sm">
-                        <i class="fa-solid fa-pen-to-square"></i> Edit
-                    </button>
                     <a href="{{ route('mahasiswa.index') }}" class="btn btn-danger rounded text-uppercase btn-sm">
                         <i class="fa-solid fa-arrow-left"></i> Back
                     </a>

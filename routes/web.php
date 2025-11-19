@@ -4,11 +4,12 @@ use App\Http\Middleware\Checkrole;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\DahsboardController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\SuratAktifController;
 use App\Http\Controllers\ProgramStudiController;
 use App\Http\Controllers\TahunAkademikController;
-use App\Http\Controllers\PegawaiController;
 
 Route::controller(LoginController::class)->group(function(){
     Route::get('/', 'login')->name('login');
@@ -16,6 +17,7 @@ Route::controller(LoginController::class)->group(function(){
     Route::get('/logout', 'logout')->name('logout');
     
 });
+Route::post('/suratAktif/pengajuan', [SuratAktifController::class, 'pengajuan'])->name('suratAktif.pengajuan');
 
 Route::middleware(['auth', 'checkrole'])->group(function(){
     Route::get('/admin', [DahsboardController::class, 'dashboard'])->name('dashboard');
@@ -26,4 +28,5 @@ Route::middleware(['auth', 'checkrole'])->group(function(){
     Route::resource('mahasiswa', MahasiswaController::class);
     Route::resource('programStudi', ProgramStudiController::class);
     Route::resource('pegawai', PegawaiController::class);
+    Route::resource('suratAktif', SuratAktifController::class);
 });

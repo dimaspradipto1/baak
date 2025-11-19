@@ -5,7 +5,6 @@
         var dataTable = $('#crudTable').DataTable({
             ajax: {
                 url: '{!! url()->current() !!}',
-
             },
             columns: [
                 {
@@ -15,23 +14,22 @@
                     class: 'text-center'
                 },
                 {
-                    data: 'user.name',
-                    name: 'user.name',
+                    data: 'users.name',  // Nama kolom yang mengakses relasi 'users.name'
+                    name: 'users.name',
                     width: '40%'
                 },
-
                 {
-                    data: 'user.email',
-                    name: 'user.email',
+                    data: 'programStudi.nama_program_studi', 
+                    name: 'programStudi.nama_program_studi',
                     width: '30%'
                 },
                 {
-                    data: 'programStudi.nama_program_studi',
-                    name: 'programStudi.nama_program_studi',
+                    data: 'status', 
+                    name: 'status',
                     width: '20%'
                 },
                 {
-                    data: 'action',
+                    data: 'action', 
                     name: 'action',
                     orderable: false,
                     searchable: false,
@@ -43,22 +41,21 @@
 @endpush
 
 @section('content')
-
-@php
-    use App\Models\Mahasiswa;
-@endphp
-
-
 <div class="card">
     <div class="card-header">
-        {{-- <a href="{{ route('mahasiswa.create') }}" class="btn btn-primary rounded btn-sm"><i class="fa-solid fa-plus"></i> Tambah</a> --}}
-
-        @if (Auth::user()->is_admin || !Mahasiswa::where('users_id', Auth::id())->exists())
-            <a href="{{ route('mahasiswa.create') }}" class="btn btn-primary rounded btn-sm">
-                <i class="fa-solid fa-plus"></i> Tambah
-            </a>
+        @if(Auth::user()->is_admin)
+            <a href="{{ route('suratAktif.create') }}" class="btn btn-primary rounded btn-sm"><i class="fa-solid fa-plus"></i> Tambah</a>
         @endif
 
+        @if(auth()->user()->is_mahasiswa)
+            <!-- Tombol hanya untuk mahasiswa: Pengajuan -->
+            <form action="{{ route('suratAktif.pengajuan') }}" method="POST" style="display: inline;">
+                @csrf
+                <button type="submit" class="btn btn-success rounded btn-sm">
+                    <i class="fa-solid fa-plus"></i> Pengajuan
+                </button>
+            </form>
+        @endif
 
         <div class="card-header-right">
             <ul class="list-unstyled card-option">
@@ -70,6 +67,8 @@
             </ul>
         </div>
     </div>
+      
+
     <div class="card-block table-border-style">
         <div class="table-responsive">
             <table class="table display nowrap rounded table-centered table-striped" id="crudTable">
@@ -77,8 +76,8 @@
                     <tr>
                         <th>NO</th>
                         <th>NAMA MAHASISWA</th>
-                        <th>EMAIL</th>
                         <th>PROGRAM STUDI</th>
+                        <th>STATUS</th>
                         <th>AKSI</th>
                     </tr>
                 </thead>

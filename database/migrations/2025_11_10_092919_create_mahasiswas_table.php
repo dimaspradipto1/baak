@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('users_id')->constrained()->cascadeOnDelete();
             $table->foreignId('program_studi_id')->constrained()->cascadeOnDelete();
+            $table->string('fakultas')->nullable();
             $table->string('tempat_lahir')->nullable();
             $table->date('tgl_lahir')->nullable();
             $table->string('npm')->nullable();

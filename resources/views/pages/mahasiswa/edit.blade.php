@@ -44,8 +44,13 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Program Studi</label>
                             <div class="col-sm-10">
-                                <input type="text" name="program_studi" value="{{ $mahasiswa->program_studi }}"
-                                    class="form-control rounded">
+                               <select name="program_studi_id" id="program_studi_id" class="form-control rounded" data-live-search="true">
+                                <option selected disabled>{{ $mahasiswa->programStudi->nama_program_studi }}</option>
+                                <option disabled>=================================</option>
+                                @foreach ($programStudi as $programStudi)
+                                    <option value="{{ $programStudi->id }}">{{ $programStudi->nama_program_studi }}</option>
+                                @endforeach
+                               </select>
                             </div>
                         </div>
 

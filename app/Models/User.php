@@ -22,7 +22,7 @@ class User extends Authenticatable
         'email',
         'password',
         'is_admin',
-        'is_operator',
+        'is_staffbaak',
         'is_tata_usaha',
         'is_mahasiswa',
         'is_approval',
@@ -59,6 +59,11 @@ class User extends Authenticatable
     public function pegawai()
     {
         return $this->hasOne(Pegawai::class);
+    }
+
+    public function suratAktif()
+    {
+        return $this->hasMany(SuratAktif::class);
     }
 
 }

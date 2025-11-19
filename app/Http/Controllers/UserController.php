@@ -34,8 +34,8 @@ class UserController extends Controller
                 if ($item->is_admin) {
                     $statuses[] = 'Admin';
                 }
-                if ($item->is_operator) {
-                    $statuses[] = 'Operator';
+                if ($item->is_staffbaak) {
+                    $statuses[] = 'Staff BAAK';
                 }
                 if ($item->is_mahasiswa) {
                     $statuses[] = 'Mahasiswa';
