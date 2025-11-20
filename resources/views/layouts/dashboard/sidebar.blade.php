@@ -58,7 +58,7 @@
                         </a>
                     </li>
                     <li class=" ">
-                        <a href="button.html" class="waves-effect waves-dark">
+                        <a href="{{ route('suratAkademik.index') }}" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
                             <span class="pcoded-mtext text-capitalize">surat layanan akademik</span>
                             <span class="pcoded-mcaret"></span>

@@ -9,6 +9,7 @@ use App\Http\Controllers\DahsboardController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\SuratAktifController;
 use App\Http\Controllers\ProgramStudiController;
+use App\Http\Controllers\SuratAkademikController;
 use App\Http\Controllers\TahunAkademikController;
 
 Route::controller(LoginController::class)->group(function(){
@@ -29,4 +30,5 @@ Route::middleware(['auth', 'checkrole'])->group(function(){
     Route::resource('programStudi', ProgramStudiController::class);
     Route::resource('pegawai', PegawaiController::class);
     Route::resource('suratAktif', SuratAktifController::class);
+    Route::resource('suratAkademik', SuratAkademikController::class);
 });

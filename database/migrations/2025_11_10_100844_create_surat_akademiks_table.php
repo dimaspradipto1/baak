@@ -13,11 +13,19 @@ return new class extends Migration
     {
         Schema::create('surat_akademiks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('mahasiswas_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('tahun_akademiks_id')->constrained()->cascadeOnDelete();
-            $table->string('cuti_belumcuti');
-            $table->string('permohonan');
-            $table->text('alasan_cuti');
+            $table->foreignId('users_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('program_studi_id')->constrained()->cascadeOnDelete();
+            $table->string('fakultas')->nullable();
+            $table->string('npm')->nullable();
+            $table->string('angkatan_tahun')->nullable();
+            $table->string('semester')->nullable();
+            $table->string('belum_sudah_cuti')->nullable();
+            $table->text('alamat')->nullable();
+            $table->string('no_wa')->nullable();
+            $table->string('permohonan')->nullable();
+            $table->text('alasan_cuti')->nullable();
+            $table->string('tahun_akademik')->nullable();
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }
