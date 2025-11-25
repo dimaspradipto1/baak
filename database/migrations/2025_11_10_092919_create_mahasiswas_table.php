@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('semester')->nullable();
             $table->text('alamat')->nullable();
             $table->string('no_wa')->nullable();
+            $table->string('status_cuti')->default('Belum Pernah Cuti');
             $table->timestamps();
         });
     }

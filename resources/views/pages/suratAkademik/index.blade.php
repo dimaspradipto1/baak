@@ -44,12 +44,12 @@
 <div class="card">
     <div class="card-header">
         @if(Auth::user()->is_admin)
-            <a href="{{ route('suratAktif.create') }}" class="btn btn-primary rounded btn-sm"><i class="fa-solid fa-plus"></i> Tambah</a>
+            <a href="{{ route('suratAkademik.create') }}" class="btn btn-primary rounded btn-sm"><i class="fa-solid fa-plus"></i> Tambah</a>
         @endif
 
         @if(auth()->user()->is_mahasiswa)
             <!-- Tombol hanya untuk mahasiswa: Pengajuan -->
-            <form action="{{ route('suratAktif.pengajuan') }}" method="POST" style="display: inline;">
+            <form action="{{ route('suratAkademik.pengajuan') }}" method="POST" style="display: inline;">
                 @csrf
                 <button type="submit" class="btn btn-success rounded btn-sm">
                     <i class="fa-solid fa-plus"></i> Pengajuan

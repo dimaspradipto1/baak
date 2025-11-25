@@ -6,11 +6,11 @@
             <!-- Basic Form Inputs card start -->
             <div class="card">
                 <div class="card-header">
-                    <h5>Form Surat Aktif</h5>
+                    <h5>Form Surat Akademik</h5>
                 </div>
                 <div class="card-block">
                     <h4 class="sub-title">Form Inputs</h4>
-                    <form action="{{ route('suratAktif.store') }}" method="POST">
+                    <form action="{{ route('suratAkademik.store') }}" method="POST">
                         @csrf
                         {{-- <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Nama Mahasiswa</label>
@@ -24,6 +24,15 @@
                             </div>
                         </div>
                          --}}
+
+                         <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">NPM</label>
+                            <div class="col-sm-10">
+                                <input type="number" name="npm" value="{{ old('npm') }}"
+                                    class="form-control rounded">
+                            </div>
+                        </div>
+                        
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Tempat Lahir</label>
                             <div class="col-sm-10">
@@ -40,13 +49,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">NPM</label>
-                            <div class="col-sm-10">
-                                <input type="number" name="npm" value="{{ old('npm') }}"
-                                    class="form-control rounded">
-                            </div>
-                        </div>
+                        
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Program Studi</label>

@@ -94,7 +94,7 @@ class SuratAktifController extends Controller
 
         // Jika data mahasiswa tidak ditemukan, redirect ke halaman mahasiswa.index atau halaman error
         if (!$mahasiswa) {
-            Alert::error('Error', 'Data mahasiswa tidak ditemukan. Silahkan isi data mahasiswa terlebih dahulu.')->autoclose(10000)->toToast();
+            Alert::error('Error', 'Data mahasiswa tidak ditemukan. Silahkan isi data mahasiswa terlebih dahulu.')->autoclose(10000)->toToast()->timerProgressBar();
             return redirect()->route('mahasiswa.create');
         }
 
@@ -123,8 +123,7 @@ class SuratAktifController extends Controller
         SuratAktif::create($data);
 
         // Menampilkan pesan sukses
-        Alert::success('Success', 'Surat Aktif berhasil dibuat secara otomatis')->autoclose(3000)->toToast();
-
+        Alert::success('Success', 'Surat Aktif berhasil dibuat secara otomatis')->autoclose(3000)->toToast()->timerProgressBar();
         // Redirect ke halaman index Surat Aktif
         return redirect()->route('suratAktif.index');
     }
@@ -219,7 +218,7 @@ class SuratAktifController extends Controller
     public function update(Request $request, SuratAktif $suratAktif)
     {
         $suratAktif->update($request->all());
-        Alert::success('success', 'data updated successfully')->autoclose(3000)->toToast();
+        Alert::success('success', 'data updated successfully')->autoclose(3000)->toToast()->timerProgressBar();
         return redirect()->route('suratAktif.index');
     }
 
@@ -229,7 +228,7 @@ class SuratAktifController extends Controller
     public function destroy(SuratAktif $suratAktif)
     {
         $suratAktif->delete();
-        Alert::success('success', 'data deleted successfully')->autoclose(3000)->toToast();
+        Alert::success('success', 'data deleted successfully')->autoclose(3000)->toToast()->timerProgressBar();
         return redirect()->route('suratAktif.index');
     }
 }
