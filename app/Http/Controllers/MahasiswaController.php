@@ -38,8 +38,8 @@ class MahasiswaController extends Controller
                     // Cek apakah relasi user ada
                     return $item->user ? $item->user->email : '-'; 
                 })
-                ->addColumn('programStudi.nama_program_studi', function ($item) {
-                    return $item->programStudi ? $item->programStudi->nama_program_studi : '-';
+                ->addColumn('programStudi.program_studi', function ($item) {
+                    return $item->programStudi ? $item->programStudi->program_studi : '-';
                 })
                 ->addColumn('action', function ($item) {
                     $actions = '
@@ -60,7 +60,7 @@ class MahasiswaController extends Controller
                     return $actions;
                 })
                 
-                ->rawColumns(['action', 'user.name', 'user.email', 'programStudi.nama_program_studi', 'detail'])
+                ->rawColumns(['action', 'user.name', 'user.email', 'programStudi.program_studi', 'detail'])
                 ->make();
         }
         return view('pages.mahasiswa.index');
@@ -95,7 +95,10 @@ class MahasiswaController extends Controller
             'no_wa' => $request->no_wa,
         ];
         Mahasiswa::create($data);
-        Alert::success('success', 'data created successfully')->autoclose(3000)->toToast();
+        Alert::success('success', 'data created successfully')
+            ->autoclose(3000)
+            ->toToast()
+            ->timerProgressBar();
         return redirect()->route('mahasiswa.index');
     }
 
@@ -124,7 +127,10 @@ class MahasiswaController extends Controller
     public function update(Request $request, Mahasiswa $mahasiswa)
     {
         $mahasiswa->update($request->all());
-        Alert::success('success', 'data updated successfully')->autoclose(3000)->toToast();
+        Alert::success('success', 'data updated successfully')
+            ->autoclose(3000)
+            ->toToast()
+            ->timerProgressBar();
         return redirect()->route('mahasiswa.index');
     }
 
@@ -134,7 +140,10 @@ class MahasiswaController extends Controller
     public function destroy(Mahasiswa $mahasiswa)
     {
         $mahasiswa->delete();
-        Alert::success('success', 'data deleted successfully')->autoclose(3000)->toToast();
+        Alert::success('success', 'data deleted successfully')
+            ->autoclose(3000)
+            ->toToast()
+            ->timerProgressBar();
         return redirect()->route('mahasiswa.index');
     }
 }

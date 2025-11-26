@@ -16,7 +16,6 @@ class TahunAkademikSeeder extends Seeder
         $tahunAkademik =[
             [
                 'tahun_akademik' => '2025/2026',
-                
             ],
             [
                 'tahun_akademik' => '2026/2027',

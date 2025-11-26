@@ -15,37 +15,37 @@ class ProgramStudiSeeder extends Seeder
     {
         $programStudis = [
             [
-                'nama_program_studi' => 'S1-KESEHATAN DAN KESEHATAN KERJA',
+                'program_studi' => 'S1-KESEHATAN DAN KESEHATAN KERJA',
             ],
             [
-                'nama_program_studi' => 'S1-KESEHATAN LINGKUNGAN',
+                'program_studi' => 'S1-KESEHATAN LINGKUNGAN',
             ],
             [
-                'nama_program_studi' => 'S1-AKUNTANSI',
+                'program_studi' => 'S1-AKUNTANSI',
             ],
             [
-                'nama_program_studi' => 'S1-MANAJEMEN',
+                'program_studi' => 'S1-MANAJEMEN',
             ],
             [
-                'nama_program_studi' => 'S1-SISTEM INFORMASI',
+                'program_studi' => 'S1-SISTEM INFORMASI',
             ],
             [
-                'nama_program_studi' => 'S1-TEKNIK INDUSTRI',
+                'program_studi' => 'S1-TEKNIK INDUSTRI',
             ],
             [
-                'nama_program_studi' => 'S1-TEKNIK INFORMATIKA',
+                'program_studi' => 'S1-TEKNIK INFORMATIKA',
             ],
             [
-                'nama_program_studi' => 'S1-TEKNIK LOGISTIK',
+                'program_studi' => 'S1-TEKNIK LOGISTIK',
             ],
             [
-                'nama_program_studi' => 'S1-TEKNIK PERKAPALAN',
+                'program_studi' => 'S1-TEKNIK PERKAPALAN',
             ],
             [
-                'nama_program_studi' => 'S2-MAGISTER KESEHATAN MASYARAKAT',
+                'program_studi' => 'S2-MAGISTER KESEHATAN MASYARAKAT',
             ],
             [
-                'nama_program_studi' => 'S2-MANAJEMEN',
+                'program_studi' => 'S2-MANAJEMEN',
             ]
         ];
 

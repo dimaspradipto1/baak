@@ -54,7 +54,7 @@
                                 <select name="program_studi_id" id="program_studi_id" class="form-control rounded" data-live-search="true">
                                     <option value="">Pilih Program Studi</option>
                                     @foreach ($programStudi as $programStudi)
-                                        <option value="{{ $programStudi->id }}">{{ $programStudi->nama_program_studi }}</option>
+                                        <option value="{{ $programStudi->id }}">{{ $programStudi->program_studi }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -64,7 +64,7 @@
                             <label class="col-sm-2 col-form-label">Fakultas</label>
                             <div class="col-sm-10">
                                <select name="fakultas" id="fakultas" class="form-control rounded">
-                                <option selected disabled>Pilih Fakultas</option>
+                                <option value="">Pilih Fakultas</option>
                                 <option disabled>=================================</option>
                                 <option value="Fakultas Sains dan Teknologi">Fakultas Sains dan Teknologi</option>
                                 <option value="Fakultas Ekonomi dan Bisnis">Fakultas Ekonomi dan Bisnis</option>

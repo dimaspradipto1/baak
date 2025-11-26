@@ -19,6 +19,7 @@ Route::controller(LoginController::class)->group(function(){
     
 });
 Route::post('/suratAktif/pengajuan', [SuratAktifController::class, 'pengajuan'])->name('suratAktif.pengajuan');
+Route::post('/suratAkademik/pengajuan', [SuratAkademikController::class, 'pengajuan'])->name('suratAkademik.pengajuan');
 
 Route::middleware(['auth', 'checkrole'])->group(function(){
     Route::get('/admin', [DahsboardController::class, 'dashboard'])->name('dashboard');

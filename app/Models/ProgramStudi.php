@@ -10,11 +10,16 @@ class ProgramStudi extends Model
 
     public function mahasiswa()
     {
-        return $this->hasMany(Mahasiswa::class); // Jika satu program studi memiliki banyak mahasiswa
+        return $this->hasMany(Mahasiswa::class, 'program_studi_id');
     }
 
     public function suratAktif()
     {
         return $this->hasMany(SuratAktif::class);
+    }
+
+    public function suratAkademik()
+    {
+        return $this->hasMany(SuratAkademik::class);
     }
 }

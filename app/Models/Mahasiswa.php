@@ -15,6 +15,11 @@ class Mahasiswa extends Model
 
     public function programStudi()
     {
-        return $this->belongsTo(ProgramStudi::class); // Memastikan relasi ke ProgramStudi
+        return $this->belongsTo(ProgramStudi::class, 'program_studi_id'); // Relasi ke ProgramStudi
+    }
+
+    public function suratAkademik()
+    {
+        return $this->hasMany(SuratAkademik::class); // Relasi ke SuratAkademik
     }
 }

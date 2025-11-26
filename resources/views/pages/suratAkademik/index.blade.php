@@ -3,51 +3,32 @@
 @push('script')
     <script>
         var dataTable = $('#crudTable').DataTable({
+            processing: true,
+            serverSide: true,
             ajax: {
                 url: '{!! url()->current() !!}',
+                type: 'GET',
+                dataType: 'json', 
             },
             columns: [
-                {
-                    data: 'DT_RowIndex',
-                    name: 'DT_RowIndex',
-                    width: '5%',
-                    class: 'text-center'
-                },
-                {
-                    data: 'users.name',  // Nama kolom yang mengakses relasi 'users.name'
-                    name: 'users.name',
-                    width: '40%'
-                },
-                {
-                    data: 'programStudi.nama_program_studi', 
-                    name: 'programStudi.nama_program_studi',
-                    width: '30%'
-                },
-                {
-                    data: 'status', 
-                    name: 'status',
-                    width: '20%'
-                },
-                {
-                    data: 'action', 
-                    name: 'action',
-                    orderable: false,
-                    searchable: false,
-                    width: '15%'
-                }
+                { data: 'DT_RowIndex', name: 'DT_RowIndex' },  
+                { data: 'users.name', name: 'users.name' },  
+                { data: 'programStudi.program_studi', name: 'programStudi.program_studi' },
+                { data: 'action', name: 'action', orderable: false, searchable: false }  
             ]
-        })
+        });
     </script>
 @endpush
+
 
 @section('content')
 <div class="card">
     <div class="card-header">
-        @if(Auth::user()->is_admin)
+        @if(Auth::user()->is_admin || Auth::user()->is_mahasiswa)
             <a href="{{ route('suratAkademik.create') }}" class="btn btn-primary rounded btn-sm"><i class="fa-solid fa-plus"></i> Tambah</a>
         @endif
 
-        @if(auth()->user()->is_mahasiswa)
+        {{-- @if(auth()->user()->is_mahasiswa)
             <!-- Tombol hanya untuk mahasiswa: Pengajuan -->
             <form action="{{ route('suratAkademik.pengajuan') }}" method="POST" style="display: inline;">
                 @csrf
@@ -55,7 +36,7 @@
                     <i class="fa-solid fa-plus"></i> Pengajuan
                 </button>
             </form>
-        @endif
+        @endif --}}
 
         <div class="card-header-right">
             <ul class="list-unstyled card-option">
@@ -77,7 +58,6 @@
                         <th>NO</th>
                         <th>NAMA MAHASISWA</th>
                         <th>PROGRAM STUDI</th>
-                        <th>STATUS</th>
                         <th>AKSI</th>
                     </tr>
                 </thead>
