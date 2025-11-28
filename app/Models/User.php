@@ -66,4 +66,8 @@ class User extends Authenticatable
         return $this->hasMany(SuratAktif::class);
     }
 
+    public function sopAkademik()
+    {
+        return $this->hasMany(SOPAkademik::class);
+    }
 }

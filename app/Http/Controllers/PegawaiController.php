@@ -68,47 +68,34 @@ class PegawaiController extends Controller
             'users_id' => 'required|exists:users,id',
             'jabatan' => 'required|string',
             'nidn' => 'required|string',
-            'url' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validasi untuk file gambar
+            'url' => 'required|image|mimes:jpeg,png,jpg,gif,svg', 
         ]);
 
-        // Cek apakah ada file yang diupload
         if ($request->hasFile('url')) {
-            // Menyimpan gambar langsung di public/storage/images dan mendapatkan nama file
-            $imageName = time() . '.' . $request->url->extension();  // Nama gambar dengan timestamp agar unik
-            $path = $request->file('url')->move(public_path('storage/images'), $imageName);  // Simpan file di public/storage/images
+            $imageName = time() . '.' . $request->url->extension();
+            $path = $request->file('url')->move(public_path('storage/images'), $imageName); 
 
-            // Memastikan path tidak kosong
             if (!$path) {
                 return back()->withErrors(['url' => 'Failed to store the image']);
             }
 
-            // Menyimpan path gambar untuk disimpan di database
-            $imageUrl = 'storage/images/' . $imageName; // Menggunakan public path untuk mengakses gambar
+            $imageUrl = 'storage/images/' . $imageName;
         } else {
-            $imageUrl = null; // Jika tidak ada file yang diupload
+            $imageUrl = null;
         }
 
-        // Membuat data baru di database
         $data = [
             'users_id' => $request->users_id,
             'jabatan' => $request->jabatan,
             'nidn' => $request->nidn,
-            'url' => $imageUrl, // Menyimpan path gambar di database
+            'url' => $imageUrl,
         ];
 
-        // Menyimpan data pegawai
         Pegawai::create($data);
-
-        // Menampilkan alert sukses
         Alert::success('Success', 'Data created successfully')->autoclose(3000)->toToast();
 
-        // Redirect ke halaman index
         return redirect()->route('pegawai.index');
     }
-
-    
-
-
 
     /**
      * Display the specified resource.

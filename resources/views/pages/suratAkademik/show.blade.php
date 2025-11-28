@@ -4,11 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surat Keterangan Aktif</title>
+    <title>Surat Layanan Akademik</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            /* font-family: Arial, sans-serif;
+            margin: 20px; */
+            /* font-family: Arial, sans-serif; */
+            font-family: "Times New Roman", Times, serif;
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+            line-height: 1.2;
         }
 
         .kop-surat {
@@ -90,67 +96,78 @@
             text-align: justify;
         }
 
+        .row {
+            display: flex;
+            justify-content: flex-start;
+            margin: 5px 0;
+        }
+
+        .col {
+            margin-right: 10px;
+        }
+
+        .row p {
+            margin: 0;
+        }
+
         .details-table {
             margin: 20px 0;
-            margin-left: 50px;
+            margin-left: 15px;
         }
 
         .details-table td {
-            padding: 5px 0;
+            font-size: 12px;
+            line-height: 1.5;
+            padding: 3px 5px;
+            text-align: left;
         }
 
         .details-table td:first-child {
-            width: 150px;
+            width: 200px;
         }
 
         .details-table td:nth-child(2) {
-            width: 10px;
+            width: 15px;
+            text-align: center;
         }
+
+        .details-table td:last-child {
+            padding-left: 5px;
+        }
+
 
         .footer {
             margin-top: 40px;
         }
 
         .signature-section {
-            margin-top: 40px;
-            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             width: 100%;
+            margin-top: 40px;
             height: 150px;
-            text-align: left;
         }
 
-        .signature-section img.stamp {
-            width: 230px;
-            opacity: 1;
-            position: relative;
-            margin-left: -130px;
-            margin-top: -20px;
+        .signature-item {
+            width: 30%;
+            text-align: center;
         }
 
-        .signature-section img.cap {
-            width: 150px;
-            opacity: 1;
-            position: relative;
-            margin-left: -80px;
-            margin-top: -30px;
-            margin-bottom: -10px;
+        .signature-item.center {
+            width: 35%;
+            text-align: center;
+            flex-grow: 1;
         }
 
-        .signature-section .text {
-            position: absolute;
-            top: 20px;
-            right: 0;
-            text-align: left;
+        .signature-item p {
+            margin-top: 5px;
+            font-size: 12px;
         }
 
-        .signature-section .text p {
-            margin: 0;
-            font-size: 14px;
-        }
-
-        .signature-section .text strong {
-            font-size: 14px;
-            margin-bottom: 200px;
+        .signature-item strong {
+            margin-top: 10px;
+            font-size: 12px;
         }
 
         .footer {
@@ -209,112 +226,152 @@
     <!-- Letter Content Section -->
     <table class="letter-header" style="width: 100%; text-align: center; margin-top: -20px;">
         <tr>
-            <td colspan="3"
-                style="text-align: center; font-size: 20px; font-weight: bold; text-decoration: underline; margin-bottom: 10px;">
-                SURAT KETERANGAN</td>
-        </tr>
-        <tr>
-            <td class="left" style="text-align: center;">No:
-                {{ $no_surat }}/UIS.B1/LL/{{ $bulanRomawi }}/{{ \Carbon\Carbon::now()->format('Y') }}</td>
+            <td colspan="3" style="text-align: center; font-size: 20px; font-weight: bold; margin-bottom: 10px;">
+                FORMULIR LAYANAN AKADEMIK</td>
         </tr>
     </table>
 
+    <div class="row">
+        <div class="col">
+            <p>Fakultas</p>
+        </div>
+        <div class="col">
+            <p style="margin-left: 185px;">:</p>
+        </div>
+        <div class="col">
+            <p>{{ $fakultas }}</p>
+        </div>
+    </div>
 
 
     <div class="content">
-        <p>
+        <p style="font-size: 12px; line-height: 0.5;">
             Yang bertanda tangan di bawah ini:
         </p>
     </div>
 
     <table class="details-table">
         <tr>
-            <td>Nama</td>
-            <td>:</td>
-            <td>
-                {{ $user->name }}
+            <td style="font-size: 12px; line-height: 1.5;">NAMA</td>
+            <td style="font-size: 12px; line-height: 1.5;">:</td>
+            <td style="font-size: 12px; line-height: 1.5; margin-left: -20px;">
+                {{ $suratAkademik->user->name }}
             </td>
         </tr>
         <tr>
-            <td>Jabatan</td>
-            <td>:</td>
-            <td>Kepala Biro Administrasi Akademik Kemahasiswaan</td>
-        </tr>
-    </table>
-    <div class="content">
-        <p>
-            Dengan ini menerangkan bahwa:
-        </p>
-    </div>
-    <table class="details-table">
-        <tr>
-            <td>Nama Mahasiswa</td>
-            <td>:</td>
-            <td>{{ $suratAktif->users->name }}</td>
-        </tr>
-        <tr>
-            <td>Tempat/Tgl Lahir</td>
-            <td>:</td>
-            <td>{{ $suratAktif->tempat_lahir }}, {{ \Carbon\Carbon::parse($suratAktif->tgl_lahir)->format('d F Y') }}
+            <td style="font-size: 12px; line-height: 1.5;">NPM</td>
+            <td style="font-size: 12px; line-height: 1.5;">:</td>
+            <td style="font-size: 12px; line-height: 1.5;">
+                {{ $suratAkademik->npm }}
             </td>
         </tr>
         <tr>
-            <td>NPM</td>
-            <td>:</td>
-            <td>{{ $suratAktif->npm }}</td>
+            <td style="font-size: 12px; line-height: 1.5;">Semester</td>
+            <td style="font-size: 12px; line-height: 1.5;">:</td>
+            <td style="font-size: 12px; line-height: 1.5;">
+                {{ $suratAkademik->semester }}
+            </td>
         </tr>
         <tr>
-            <td>Program Studi</td>
-            <td>:</td>
-            <td>{{ $suratAktif->programStudi->nama_program_studi }}</td>
+            <td style="font-size: 12px; line-height: 1.5;">Prodi</td>
+            <td style="font-size: 12px; line-height: 1.5;">:</td>
+            <td style="font-size: 12px; line-height: 1.5;">
+                {{ $suratAkademik->programStudi->program_studi }}
+            </td>
         </tr>
         <tr>
-            <td>Jenjang Pendidikan</td>
-            <td>:</td>
-            <td>{{ $suratAktif->jenjang_pendidikan }}</td>
+            <td style="font-size: 12px; line-height: 1.5;">Sudah/Belum Pernah Cuti</td>
+            <td style="font-size: 12px; line-height: 1.5;">:</td>
+            <td style="font-size: 12px; line-height: 1.5;">
+                {{ $suratAkademik->status_cuti }}
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 12px; line-height: 1.5;">Alamat/No. Telp/HP</td>
+            <td style="font-size: 12px; line-height: 1.5;">:</td>
+            <td style="font-size: 12px; line-height: 1.5;">
+                {{ $suratAkademik->alamat }}
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 12px; line-height: 1.5;">Mengajukan Permohonan</td>
+            <td style="font-size: 12px; line-height: 1.5;">:</td>
+            <td style="font-size: 12px; line-height: 1.5;">
+                {{ $suratAkademik->permohonan }}
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 12px; line-height: 1.5;">Alasan Cuti Akademik</td>
+            <td style="font-size: 12px; line-height: 1.5;">:</td>
+            <td style="font-size: 12px; line-height: 1.5;">
+                {{ $suratAkademik->alasan_cuti }}
+            </td>
         </tr>
     </table>
 
     <div class="content">
-        <p>
-            Adalah benar mahasiswa {{ $suratAktif->fakultas }} Universitas Ibnu Sina yang aktif dalam perkuliahan dan
-            kegiatan akademik pada Semester {{ $suratAktif->status_semester }} Tahun Akademik {{ $suratAktif->tahun_akademik}}.
+        <p style="font-size: 12px; line-height: 1.5;">
+            Sebagai bahan pertimbangan bersama ini kami lampirkan:
         </p>
-        <p>
-            Demikian surat keterangan ini dibuat dengan sesungguhnya untuk dipergunakan sebagaimana mestinya.
+        <ol style="font-size: 12px; line-height: 1.5; margin-top: -10px;">
+            <li>Surat Pernyataan Mahasiswa Cuti/Pindah Prodi/Pindah Kelas</li>
+            <li>KHS Terakhir</li>
+            <li>Surat Keterangan lain yang relevan (Surat Keterangan Sakit, Surat Keterangan Bekerja dll)</li>
+        </ol>
+        <p style="font-size: 12px; line-height: 1.5;">
+            Atas perhatian saudara kami ucapkan terima kasih.
         </p>
     </div>
 
-    <!-- Signature Section with Stamp -->
+    <!-- Signature Section with multiple signatures -->
     <div class="signature-section">
-        <div class="text" style="text-align: left; margin-top: 20px;">
+        <!-- Signature 1: Pembimbing Akademik -->
+        <div class="signature-item" style="margin-top: -60px;">
+            <p>Mengetahui/Menyetujui</p>
+            <p style="margin-top: -10px;">Pembimbing Akademik</p>
+            <p style="margin-top: 70px;">(.......................................)</p>
+        </div>
+
+        <!-- Signature 2: Hormat Saya -->
+        <div class="signature-item" style="margin-top: -60px;">
             <p>Batam, {{ \Carbon\Carbon::now()->format('d F Y') }}</p>
-            <p style="margin: 0;">Universitas Ibnu Sina</p>
-            <p style="margin: 0;">Kepala BAAK</p>
-            <div
-                style="display: flex; flex-direction: column; justify-content: left; align-items: center; margin-top: -10px;">
+            <p style="margin-top: -10px;">Hormat Saya</p>
+            <p style="margin-top: 70px;">{{ $suratAkademik->user->name }}</p>
+        </div>
+    </div>
 
-                <div style="display: flex; align-items: center; text-align: left; margin-top: 80px;">
-                    <div>
-                        <img src="{{ asset('dashboard/assets/images/qr_download.png') }}" alt="QR Code" class="qr"
-                            style="width: 90px; height: 90px; margin-top: -95px; margin-left: 6px; margin-bottom: -10px;">
+    <!-- Signature Section with "Ka. Prodi" centered -->
+    <div class="signature-section" style="margin-top: -85px;">
+        <!-- Signature 3: Ka. Prodi (Centered) -->
+        <div class="signature-item center">
+            <p>Ketua Prodi</p>
+            <p style="margin-top: 70px;">(.......................................)</p>
+        </div>
+    </div>
 
-                        <p
-                            style="margin: 0; font-weight: bold; text-decoration: underline; margin-top: 10px; margin-right: 30px">
-                            {{ $user->name }}</p>
-                        <p style="margin: 0; margin-right: 30px;">NIDN. {{ $user->nidn }}</p>
+    <!-- Signature Section with "Ka. BAAK" and "Ka. BAUK" -->
+    <div class="signature-section">
+        <!-- Signature 4: Ka. BAAK -->
+        <div class="signature-item" style="margin-top: -130px;">
+            <p>Ka. BAAK</p>
+            <p style="margin-top: 90px; text-decoration: underline; font-weight: bold;">Leni Utami,MKM</p>
+            <p style="margin-top: -12px;">NIDN. 1001057904</p>
+        </div>
 
-                    </div>
-                </div>
-            </div>
+        <!-- Signature 5: Ka. BAUK -->
+        <div class="signature-item" style="margin-top: -130px;">
+            <p>Ka. BAUK</p>
+            <p style="margin-top: 90px; margin-left: -10px; text-decoration: underline; font-weight: bold;">Andi
+                Hidayatul Fadila, SE., M.Si.AK</p>
+            <p style="margin-top: -12px;">NIDN. 1011088401</p>
         </div>
     </div>
 
     <!-- Footer Section -->
-    <div class="footer" style="margin-top: 90px;">
+    {{-- <div class="footer" style="margin-top: 90px;">
         <p>Tembusan:</p>
         <p style="margin-left: 25px; margin-bottom: 30px; margin-top: -10px;">- Arsip</p>
-    </div>
+    </div> --}}
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {

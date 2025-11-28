@@ -22,7 +22,6 @@ class SuratAktifController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            // $suratAktif = SuratAktif::with('users', 'programStudi')->get();  
             if (Auth::user()->is_admin) {
                 $suratAktif = SuratAktif::with('users', 'programStudi')->get();
             }
@@ -36,19 +35,17 @@ class SuratAktifController extends Controller
             return DataTables::of($suratAktif)
                 ->addIndexColumn()
                 ->addColumn('users.name', function ($item) {
-                    return $item->users ? $item->users->name : '-';  // Menampilkan nama pengguna yang terhubung
+                    return $item->users ? $item->users->name : '-';
                 })
-                ->addColumn('programStudi.nama_program_studi', function ($item) {
-                    return $item->programStudi ? $item->programStudi->nama_program_studi : '-';
+                ->addColumn('programStudi.program_studi', function ($item) {
+                    return $item->programStudi ? $item->programStudi->program_studi : '-';
                 })
                 ->addColumn('status', function ($item) {
                     return $item->status == 'pending' ? '<span class="badge badge-warning text-white px-3 py-2">Pending</span>' : ($item->status == 'diterima' ? '<span class="badge badge-success text-white px-3 py-2">Diterima</span>' : ($item->status == 'ditolak' ? '<span class="badge badge-danger text-white px-3 py-2">Ditolak</span>' : '-'));
                 })
                 ->addColumn('action', function ($item) {
-                    // Cek apakah pengguna adalah admin
                     $actions = '';
                     if (Auth::user()->is_admin) {
-                        // Menampilkan tombol untuk admin
                         $actions .= '
                             <a href="' . route('suratAktif.show', $item->id) . '" class="btn btn-sm btn-primary text-white px-3 rounded" title="detail"><i class="fa-solid fa-eye"></i></a> 
                             <a href="' . route('suratAktif.edit', $item->id) . '" class="btn btn-sm btn-warning text-white px-3 rounded" title="edit"><i class="fa-solid fa-pen-to-square"></i></a> 
@@ -60,7 +57,6 @@ class SuratAktifController extends Controller
                         ';
                     }
 
-                    // Cek jika status surat adalah diterima dan tampilkan tombol print untuk is_mahasiswa
                     if ($item->status == 'diterima' && Auth::user()->is_mahasiswa) {
                         $actions .= '
                             <a href="' . route('suratAktif.show', $item->id) . '" class="btn btn-sm btn-primary text-white px-3 rounded" title="print"><i class="fa-solid fa-print"></i></a>
@@ -76,7 +72,6 @@ class SuratAktifController extends Controller
         return view('pages.suratAktif.index');
     }
 
-
     /**
      * Show the form for creating a new resource.
      */
@@ -89,21 +84,17 @@ class SuratAktifController extends Controller
 
     public function pengajuan()
     {
-        // Ambil data mahasiswa berdasarkan user yang sedang login
         $mahasiswa = Mahasiswa::where('users_id', Auth::id())->first();
 
-        // Jika data mahasiswa tidak ditemukan, redirect ke halaman mahasiswa.index atau halaman error
         if (!$mahasiswa) {
             Alert::error('Error', 'Data mahasiswa tidak ditemukan. Silahkan isi data mahasiswa terlebih dahulu.')->autoclose(10000)->toToast()->timerProgressBar();
             return redirect()->route('mahasiswa.create');
         }
 
-        // Mengambil nomor surat terakhir dan menambahkan 1 untuk nomor surat baru
         $lastSurat = SuratAktif::latest('no_surat')->first();
         $noSurat = $lastSurat ? $lastSurat->no_surat + 1 : 1;
         $noSuratFormatted = sprintf("%03d", $noSurat);
 
-        // Menyusun data untuk Surat Aktif
         $data = [
             'no_surat' => $noSuratFormatted,
             'users_id' => Auth::id(),
@@ -113,13 +104,12 @@ class SuratAktifController extends Controller
             'npm' => $mahasiswa->npm,
             'jenjang_pendidikan' => $mahasiswa->jenjang_pendidikan,
             'fakultas' => $mahasiswa->fakultas,
-            'status' => 'pending', // Status bisa disesuaikan
-            'semester' => $mahasiswa->semester ?? null,  // Jika tidak ada semester, null
-            'status_semester' => $mahasiswa->status_semester ?? null,  // Jika tidak ada semester, null
-            'tahun_akademik' => $mahasiswa->tahun_akademik ?? null, // Jika tidak ada tahun akademik, null
+            'status' => 'pending',
+            'semester' => $mahasiswa->semester ?? null,
+            'status_semester' => $mahasiswa->status_semester ?? null,
+            'tahun_akademik' => $mahasiswa->tahun_akademik ?? null,
         ];
 
-        // Menyimpan data Surat Aktif ke database
         SuratAktif::create($data);
 
         // Menampilkan pesan sukses

@@ -8,18 +8,22 @@ class Mahasiswa extends Model
 {
     protected $guarded = [];
 
+    // Relasi ke User
     public function user()
     {
-        return $this->belongsTo(User::class, 'users_id'); // Menambahkan relasi yang benar
+        return $this->belongsTo(User::class, 'users_id');
     }
 
+    // Relasi ke ProgramStudi
     public function programStudi()
     {
-        return $this->belongsTo(ProgramStudi::class, 'program_studi_id'); // Relasi ke ProgramStudi
+        return $this->belongsTo(ProgramStudi::class, 'program_studi_id');
     }
 
+    // Relasi ke SuratAkademik
     public function suratAkademik()
     {
-        return $this->hasMany(SuratAkademik::class); // Relasi ke SuratAkademik
+        return $this->hasMany(SuratAkademik::class);
     }
 }
+

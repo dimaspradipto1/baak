@@ -1,0 +1,86 @@
+@extends('layouts.dashboard.template')
+
+@section('content')
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- Basic Form Inputs card start -->
+            <div class="card">
+                <div class="card-header">
+                    <h5>Detail Mahasiswa</h5>
+                </div>
+                <div class="card-block">
+                    <table class="table table-bordered table-striped table-hover">
+                        <tr>
+                            <td width="20%">Nama Mahasiswa</td>
+                            <td width="1%">:</td>
+                            <td width="79%">{{ $mahasiswa->user->name }}</td>
+                        </tr>
+                        <tr>
+                            <td width="20%">Program Studi</td>
+                            <td width="1%">:</td>
+                            <td width="79%">{{ $mahasiswa->program_studi }}</td>
+                        </tr>
+                        <tr>
+                            <td width="20%">Alamat</td>
+                            <td width="1%">:</td>
+                            <td width="79%">{{ $mahasiswa->alamat }}</td>
+                        </tr>
+                        <tr>
+                            <td width="20%">No WA</td>
+                            <td width="1%">:</td>
+                            <td width="79%">{{ $mahasiswa->no_wa }}</td>
+                        </tr>
+                        <tr>
+                            <td width="20%">Tanggal Lahir</td>
+                            <td width="1%">:</td>
+                            <td width="79%">{{ $mahasiswa->tgl_lahir }}</td>
+                        </tr>
+                        <tr>
+                            <td width="20%">Tempat Lahir</td>
+                            <td width="1%">:</td>
+                            <td width="79%">{{ $mahasiswa->tempat_lahir }}</td>
+                        </tr>
+                        <tr>
+                            <td width="20%">NPM</td>
+                            <td width="1%">:</td>
+                            <td width="79%">{{ $mahasiswa->npm }}</td>
+                        </tr>
+                        <tr>
+                            <td width="20%">Program Studi</td>
+                            <td width="1%">:</td>
+                            <td width="79%">{{ $mahasiswa->program_studi }}</td>
+                        </tr>
+                        <tr>
+                            <td width="20%">Jenjang Pendidikan</td>
+                            <td width="1%">:</td>
+                        <td width="79%">{{ $mahasiswa->jenjang_pendidikan }}</td>
+                        </tr>
+                        <tr>
+                            <td width="20%">Semester</td>
+                            <td width="1%">:</td>
+                            <td width="79%">{{ $mahasiswa->semester }}</td>
+                        </tr>
+                        <tr>
+                            <td width="20%">Alamat</td>
+                            <td width="1%">:</td>
+                            <td width="79%">{{ $mahasiswa->alamat }}</td>
+                        </tr>
+                        <tr>
+                            <td width="20%">No WA</td>
+                            <td width="1%">:</td>
+                            <td width="79%">{{ $mahasiswa->no_wa }}</td>
+                        </tr>
+                    </table>
+                   
+                    <button type="submit" class="btn btn-primary rounded text-uppercase btn-sm">
+                        <i class="fa-solid fa-pen-to-square"></i> Edit
+                    </button>
+                    <a href="{{ route('mahasiswa.index') }}" class="btn btn-danger rounded text-uppercase btn-sm">
+                        <i class="fa-solid fa-arrow-left"></i> Back
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Basic Form Inputs card end -->
+@endsection

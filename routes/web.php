@@ -8,6 +8,7 @@ use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\DahsboardController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\SuratAktifController;
+use App\Http\Controllers\SOPAkademikController;
 use App\Http\Controllers\ProgramStudiController;
 use App\Http\Controllers\SuratAkademikController;
 use App\Http\Controllers\TahunAkademikController;
@@ -16,6 +17,7 @@ Route::controller(LoginController::class)->group(function(){
     Route::get('/', 'login')->name('login');
     Route::post('/loginproses', 'loginproses')->name('loginproses');
     Route::get('/logout', 'logout')->name('logout');
+    Route::get('/register', 'register')->name('register');
     
 });
 Route::post('/suratAktif/pengajuan', [SuratAktifController::class, 'pengajuan'])->name('suratAktif.pengajuan');
@@ -32,4 +34,5 @@ Route::middleware(['auth', 'checkrole'])->group(function(){
     Route::resource('pegawai', PegawaiController::class);
     Route::resource('suratAktif', SuratAktifController::class);
     Route::resource('suratAkademik', SuratAkademikController::class);
+    Route::resource('sopAkademik', SOPAkademikController::class);
 });
