@@ -12,6 +12,7 @@ use App\Http\Controllers\SOPAkademikController;
 use App\Http\Controllers\ProgramStudiController;
 use App\Http\Controllers\SuratAkademikController;
 use App\Http\Controllers\TahunAkademikController;
+use App\Http\Controllers\KepanitiaanController;
 
 Route::controller(LoginController::class)->group(function(){
     Route::get('/', 'login')->name('login');
@@ -35,4 +36,5 @@ Route::middleware(['auth', 'checkrole'])->group(function(){
     Route::resource('suratAktif', SuratAktifController::class);
     Route::resource('suratAkademik', SuratAkademikController::class);
     Route::resource('sopAkademik', SOPAkademikController::class);
+    Route::resource('kepanitiaan', KepanitiaanController::class);
 });

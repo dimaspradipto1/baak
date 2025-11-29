@@ -7,16 +7,42 @@
                 url: '{!! url()->current() !!}', // Menampilkan data dari database
 
             },
-            columns: [{
+            columns: [
+                {
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex',
                     width: '5%',
-                    class: 'text-start'
+                    class: 'text-center'
                 },
                 {
-                    data: 'program_studi',
-                    name: 'program_studi',
-                    width: '40%'
+                    data: 'tahun_akademik_id',
+                    name: 'tahun akademik',
+                    width: '20%'
+                },
+                {
+                    data: 'ketua',
+                    name: 'ketua',
+                    width: '20%'
+                },
+                {
+                    data: 'sekretaris',
+                    name: 'sekretaris',
+                    width: '20%'
+                },
+                {
+                    data: 'prodi',
+                    name: 'prodi',
+                    width: '20%'
+                },
+                {
+                    data: 'file',
+                    name: 'file',
+                    width: '20%'
+                },
+                {
+                    data: 'users_id',
+                    name: 'users_id',
+                    width: '20%'
                 },
                 {
                     data: 'action',
@@ -33,7 +59,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <a href="{{ route('programStudi.create') }}" class="btn btn-primary rounded btn-sm"><i class="fa-solid fa-plus"></i> Tambah</a>
+        <a href="{{ route('kepanitiaan.create') }}" class="btn btn-primary rounded btn-sm"><i class="fa-solid fa-plus"></i> Tambah</a>
         <div class="card-header-right">
             <ul class="list-unstyled card-option">
                 <li><i class="fa fa fa-wrench open-card-option"></i></li>
@@ -50,7 +76,12 @@
                 <thead>
                     <tr>
                         <th>NO</th>
-                        <th>NAMA PROGRAM STUDI</th>
+                        <th>TAHUN AKADEMIK</th>
+                        <th>KETUA</th>
+                        <th>SEKRETARIS</th>
+                        <th>PRODI</th>
+                        <th>DOKUMEN</th>
+                        <th>SUBMITTED BY</th>
                         <th>AKSI</th>
                     </tr>
                 </thead>

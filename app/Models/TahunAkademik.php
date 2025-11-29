@@ -13,5 +13,10 @@ class TahunAkademik extends Model
     {
         return $this->hasMany(SuratAktif::class, 'tahun_akademik_id');  // Pastikan 'tahun_akademik_id' adalah nama kolom yang menghubungkan dengan tabel surat_aktif
     }
+
+    public function kepanitiaan()
+    {
+        return $this->hasMany(Kepanitiaan::class, 'tahun_akademik_id');
+    }
 }
 

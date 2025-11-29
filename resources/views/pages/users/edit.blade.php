@@ -54,6 +54,10 @@
                                     <input type="checkbox" class="form-check-input" name="is_approval" id="is_approval" {{ $user->is_approval ? 'checked' : '' }}>
                                     <label class="form-check-label" for="is_approval">Approval</label>
                                 </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="is_staffbaak" id="is_staffbaak" {{ $user->is_staffbaak ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="is_staffbaak">Staff BAAK</label>
+                                </div>
                             </div>
                         </div>
 

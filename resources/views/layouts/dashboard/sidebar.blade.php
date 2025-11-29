@@ -69,7 +69,7 @@
         </ul>
         @endif
 
-        @if (Auth::user()->is_admin || Auth::user()->is_tata_usaha || Auth::user()->is_operator)
+        @if (Auth::user()->is_admin || Auth::user()->is_tata_usaha || Auth::user()->is_operator || Auth::user()->is_staffbaak)
         <ul class="pcoded-item pcoded-left-item">
             <li class="pcoded-hasmenu">
                 <a href="javascript:void(0)" class="waves-effect waves-dark">
@@ -121,9 +121,9 @@
                         </a>
                     </li>
                     <li class=" ">
-                        <a href="button.html" class="waves-effect waves-dark">
+                        <a href="{{ route('kepanitiaan.index') }}" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext text-capitalize">SK</span>
+                            <span class="pcoded-mtext text-capitalize">SK Kepanitiaan</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>

@@ -62,7 +62,7 @@
                     <tr>
                         <th>NO</th>
                         <th>NAMA SOP</th>
-                        <th>FILE</th>
+                        <th>DOKUMEN</th>
                         <th>SUBMITTED BY</th>
                         <th>AKSI</th>
                     </tr>
