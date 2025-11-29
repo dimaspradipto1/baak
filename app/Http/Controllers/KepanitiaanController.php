@@ -65,6 +65,7 @@ class KepanitiaanController extends Controller
     {
         $validatedData = $request->validate([
             'tahun_akademik_id' => 'required',
+            'nama_dokumen' => 'required',
             'ketua' => 'required',
             'sekretaris' => 'required',
             'prodi' => 'required',
@@ -88,6 +89,7 @@ class KepanitiaanController extends Controller
 
         Kepanitiaan::create([
             'tahun_akademik_id' => $request->tahun_akademik_id,
+            'nama_dokumen' => $request->nama_dokumen,
             'ketua' => $request->ketua,
             'sekretaris' => $request->sekretaris,
             'prodi' => $request->prodi,

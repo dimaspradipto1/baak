@@ -27,18 +27,13 @@
                             </div>
                         </div>
 
-                        {{-- <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Jenis SK</label>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Nama Dokumen</label>
                             <div class="col-sm-10">
-                               <select name="jenis_sk" class="form-control rounded" required>
-                                   <option value="">Pilih Jenis SK</option>
-                                   <option value="">=====================</option>
-                                   <option value="SK Kepanitiaan">SK Kepanitiaan</option>
-                               </select>
+                                <textarea name="nama_dokumen" class="form-control rounded" id="" cols="30" rows="3">{{ old('nama_dokumen') }}</textarea>
                             </div>
-                        </div> --}}
+                        </div>
 
-                        <!-- File SOP -->
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Nama Ketua</label>
                             <div class="col-sm-10">
@@ -61,9 +56,9 @@
                                <select name="prodi" id="prodi" class="form-control rounded" required>
                                    <option value="">Pilih Program Studi</option>
                                    <option value="">=====================</option>
-                                   <option value="Fakultas Ekonomi dan Bisnis">Fakultas Ekonomi dan Bisnis</option>
-                                   <option value="Fakultas Sains dan Teknologi">Fakultas Sains dan Teknologi</option>
-                                   <option value="Fakultas Ilmu Kesehatan">Fakultas Ilmu Kesehatan</option>
+                                   <option value="Fakultas Ekonomi dan Bisnis" {{ old('prodi') == 'Fakultas Ekonomi dan Bisnis' ? 'selected' : '' }}>Fakultas Ekonomi dan Bisnis</option>
+                                   <option value="Fakultas Sains dan Teknologi" {{ old('prodi') == 'Fakultas Sains dan Teknologi' ? 'selected' : '' }}>Fakultas Sains dan Teknologi</option>
+                                   <option value="Fakultas Ilmu Kesehatan" {{ old('prodi') == 'Fakultas Ilmu Kesehatan' ? 'selected' : '' }}>Fakultas Ilmu Kesehatan</option>
                                </select>
                             </div>
                         </div>

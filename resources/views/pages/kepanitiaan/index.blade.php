@@ -5,8 +5,8 @@
         var dataTable = $('#crudTable').DataTable({
             ajax: {
                 url: '{!! url()->current() !!}', // Menampilkan data dari database
-
             },
+            scrollX: true, 
             columns: [
                 {
                     data: 'DT_RowIndex',
@@ -18,6 +18,12 @@
                     data: 'tahun_akademik_id',
                     name: 'tahun akademik',
                     width: '20%'
+                },
+                {
+                    data: 'nama_dokumen',
+                    name: 'nama dokumen',
+                    width: '20%',
+                    class: 'text-wrap'
                 },
                 {
                     data: 'ketua',
@@ -51,7 +57,7 @@
                     searchable: false,
                     width: '15%'
                 }
-            ]
+            ],
         })
     </script>
 @endpush
@@ -72,11 +78,12 @@
     </div>
     <div class="card-block table-border-style">
         <div class="table-responsive">
-            <table class="table display nowrap rounded table-centered table-striped" id="crudTable">
+            <table class="table display nowrap rounded table-centered table-striped" id="crudTable" style="width: 100%">
                 <thead>
                     <tr>
                         <th>NO</th>
                         <th>TAHUN AKADEMIK</th>
+                        <th>NAMA DOKUMEN</th>
                         <th>KETUA</th>
                         <th>SEKRETARIS</th>
                         <th>PRODI</th>
