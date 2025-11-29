@@ -71,4 +71,9 @@ class User extends Authenticatable
         return $this->hasMany(Kepanitiaan::class);
     }
 
+    public function pedoman()
+    {
+        return $this->hasMany(Pedoman::class);
+    }
+
 }

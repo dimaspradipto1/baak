@@ -4,15 +4,16 @@ use App\Http\Middleware\Checkrole;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PedomanController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\DahsboardController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\SuratAktifController;
+use App\Http\Controllers\KepanitiaanController;
 use App\Http\Controllers\SOPAkademikController;
 use App\Http\Controllers\ProgramStudiController;
 use App\Http\Controllers\SuratAkademikController;
 use App\Http\Controllers\TahunAkademikController;
-use App\Http\Controllers\KepanitiaanController;
 
 Route::controller(LoginController::class)->group(function(){
     Route::get('/', 'login')->name('login');
@@ -37,4 +38,5 @@ Route::middleware(['auth', 'checkrole'])->group(function(){
     Route::resource('suratAkademik', SuratAkademikController::class);
     Route::resource('sopAkademik', SOPAkademikController::class);
     Route::resource('kepanitiaan', KepanitiaanController::class);
+    Route::resource('pedoman', PedomanController::class);
 });

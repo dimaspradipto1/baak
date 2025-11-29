@@ -6,65 +6,26 @@
             <!-- Basic Form Inputs card start -->
             <div class="card">
                 <div class="card-header">
-                    <h5>Form SK Kepanitiaan</h5>
+                    <h5>Form Pedoman</h5>
                 </div>
                 <div class="card-block">
                     <h4 class="sub-title">Form Inputs</h4>
-                    <form action="{{ route('kepanitiaan.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('pedoman.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
-                        <!-- Nama SOP -->
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Tahun Akademik</label>
+                            <label class="col-sm-2 col-form-label">Tahun</label>
                             <div class="col-sm-10">
-                               <select name="tahun_akademik_id" class="form-control rounded" required>
-                                   <option value="">Pilih Tahun Akademik</option>
-                                   <option value="">=====================</option>
-                                   @foreach ($tahunAkademik as $item)
-                                       <option value="{{ $item->id }}">{{ $item->tahun_akademik }}</option>
-                                   @endforeach
-                               </select>
-                            </div>
-                        </div>
-
-                        {{-- <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Jenis SK</label>
-                            <div class="col-sm-10">
-                               <select name="jenis_sk" class="form-control rounded" required>
-                                   <option value="">Pilih Jenis SK</option>
-                                   <option value="">=====================</option>
-                                   <option value="SK Kepanitiaan">SK Kepanitiaan</option>
-                               </select>
-                            </div>
-                        </div> --}}
-
-                        <!-- File SOP -->
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Nama Ketua</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="ketua" value="{{ old('ketua') }}"
-                                    class="form-control rounded" placeholder="Masukkan nama ketua" required>
+                                <input type="number" name="tahun" value="{{ old('tahun') }}"
+                                    class="form-control rounded" placeholder="Masukkan tahun" required>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Nama Sekretaris umum</label>
+                            <label class="col-sm-2 col-form-label">Nama Pedoman</label>
                             <div class="col-sm-10">
-                                <input type="text" name="sekretaris" value="{{ old('sekretaris') }}"
-                                    class="form-control rounded" placeholder="Masukkan nama sekretaris" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Program Studi</label>
-                            <div class="col-sm-10">
-                               <select name="prodi" id="prodi" class="form-control rounded" required>
-                                   <option value="">Pilih Program Studi</option>
-                                   <option value="">=====================</option>
-                                   <option value="Fakultas Ekonomi dan Bisnis">Fakultas Ekonomi dan Bisnis</option>
-                                   <option value="Fakultas Sains dan Teknologi">Fakultas Sains dan Teknologi</option>
-                                   <option value="Fakultas Ilmu Kesehatan">Fakultas Ilmu Kesehatan</option>
-                               </select>
+                                <input type="text" name="nama_pedoman" value="{{ old('nama_pedoman') }}"
+                                    class="form-control rounded" placeholder="Masukkan nama pedoman" required>
                             </div>
                         </div>
 
@@ -90,7 +51,7 @@
                         </button>
 
                         <!-- Back button -->
-                        <a href="{{ route('kepanitiaan.index') }}" class="btn btn-danger rounded text-uppercase btn-sm">
+                        <a href="{{ route('pedoman.index') }}" class="btn btn-danger rounded text-uppercase btn-sm">
                             <i class="fa-solid fa-arrow-left"></i> Back
                         </a>
                     </form>
