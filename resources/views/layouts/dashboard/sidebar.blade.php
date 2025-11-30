@@ -3,7 +3,8 @@
     <div class="pcoded-inner-navbar main-menu">
         <div class="">
             <div class="main-menu-header">
-                <img class="img-80 img-radius" src="{{ asset('dashboard/assets/images/avatar-4.jpg') }}" alt="User-Profile-Image">
+                <img class="img-80 img-radius" src="{{ asset('dashboard/assets/images/avatar-4.jpg') }}"
+                    alt="User-Profile-Image">
                 <div class="user-details">
                     <span id="more-details">{{ Auth::user()->name }}<i class="fa fa-caret-down"></i></span>
                 </div>
@@ -41,99 +42,156 @@
         </ul>
 
         @if (Auth::user()->is_admin || Auth::user()->is_mahasiswa)
-        {{-- <div class="pcoded-navigation-label">UI Element</div> --}}
-        <ul class="pcoded-item pcoded-left-item">
-            <li class="pcoded-hasmenu">
-                <a href="javascript:void(0)" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="fa-solid fa-users"></i></span>
-                    <span class="pcoded-mtext text-capitalize">layanan mahasiswa</span>
-                    <span class="pcoded-mcaret"></span>
-                </a>
-                <ul class="pcoded-submenu">
-                    <li class=" ">
-                        <a href="{{ route('suratAktif.index') }}" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext text-capitalize">surat keterangan aktif</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                    <li class=" ">
-                        <a href="{{ route('suratAkademik.index') }}" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext text-capitalize">surat layanan akademik</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+            {{-- <div class="pcoded-navigation-label">UI Element</div> --}}
+            <ul class="pcoded-item pcoded-left-item">
+                <li class="pcoded-hasmenu">
+                    <a href="javascript:void(0)" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="fa-solid fa-users"></i></span>
+                        <span class="pcoded-mtext text-capitalize">layanan mahasiswa</span>
+                        <span class="pcoded-mcaret"></span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li class=" ">
+                            <a href="{{ route('suratAktif.index') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                <span class="pcoded-mtext text-capitalize">surat keterangan aktif</span>
+                                <span class="pcoded-mcaret"></span>
+                            </a>
+                        </li>
+                        <li class=" ">
+                            <a href="{{ route('suratAkademik.index') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                <span class="pcoded-mtext text-capitalize">surat layanan akademik</span>
+                                <span class="pcoded-mcaret"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         @endif
 
         @if (Auth::user()->is_admin || Auth::user()->is_tata_usaha || Auth::user()->is_operator || Auth::user()->is_staffbaak)
-        <ul class="pcoded-item pcoded-left-item">
-            <li class="pcoded-hasmenu">
-                <a href="javascript:void(0)" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="fa-solid fa-folder-open"></i></span>
-                    <span class="pcoded-mtext text-capitalize">arsip</span>
-                    <span class="pcoded-mcaret"></span>
-                </a>
-                <ul class="pcoded-submenu">
-                    <li class=" ">
-                        <a href="{{ route('kepanitiaan.index') }}" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext text-capitalize">LPJ kepanitiaan</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                    <li class=" ">
-                        <a href="button.html" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext text-capitalize">ijazah dan transkrip nilai</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                    <li class=" ">
-                        <a href="button.html" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext text-capitalize">wasdalbin</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                    <li class=" ">
-                        <a href="button.html" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext text-capitalize">kurikulum prodi</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                    <li class=" ">
-                        <a href="{{ route('pedoman.index') }}" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext text-capitalize">pedoman</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                    <li class=" ">
-                        <a href="{{ route('sopAkademik.index') }}" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext text-capitalize">SOP akademik</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                    <li class=" ">
-                        <a href="#" class="waves-effect waves-dark">
-                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                            <span class="pcoded-mtext text-capitalize">SK Kepanitiaan</span>
-                            <span class="pcoded-mcaret"></span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+            <ul class="pcoded-item pcoded-left-item">
+                <li class="pcoded-hasmenu">
+                    <a href="javascript:void(0)" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="fa-solid fa-folder-open"></i></span>
+                        <span class="pcoded-mtext text-capitalize">arsip</span>
+                        <span class="pcoded-mcaret"></span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li class=" ">
+                            <a href="{{ route('kepanitiaan.index') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                <span class="pcoded-mtext text-capitalize">LPJ kepanitiaan</span>
+                                <span class="pcoded-mcaret"></span>
+                            </a>
+                        </li>
+                        <li class=" ">
+                            <a href="button.html" class="waves-effect waves-dark">
+                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                <span class="pcoded-mtext text-capitalize">ijazah dan transkrip nilai</span>
+                                <span class="pcoded-mcaret"></span>
+                            </a>
+                        </li>
+                        <li class=" ">
+                            <a href="button.html" class="waves-effect waves-dark">
+                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                <span class="pcoded-mtext text-capitalize">wasdalbin</span>
+                                <span class="pcoded-mcaret"></span>
+                            </a>
+                        </li>
+                        <li class=" ">
+                            <a href="button.html" class="waves-effect waves-dark">
+                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                <span class="pcoded-mtext text-capitalize">kurikulum prodi</span>
+                                <span class="pcoded-mcaret"></span>
+                            </a>
+                        </li>
+                        <li class=" ">
+                            <a href="{{ route('pedoman.index') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                <span class="pcoded-mtext text-capitalize">pedoman</span>
+                                <span class="pcoded-mcaret"></span>
+                            </a>
+                        </li>
+                        <li class=" ">
+                            <a href="{{ route('sopAkademik.index') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                <span class="pcoded-mtext text-capitalize">SOP akademik</span>
+                                <span class="pcoded-mcaret"></span>
+                            </a>
+                        </li>
+                        <li class=" ">
+                            <a href="{{ route('sk.index') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                <span class="pcoded-mtext text-capitalize">SK Kepanitiaan</span>
+                                <span class="pcoded-mcaret"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         @endif
 
-        @if (Auth::user()->is_admin )
-        {{-- <div class="pcoded-navigation-label">Forms</div> --}}
+        @if (Auth::user()->is_admin)
+            <div class="pcoded-navigation-label">Master</div>
+            <ul class="pcoded-item pcoded-left-item">
+                <li class="pcoded-hasmenu ">
+                    <a href="javascript:void(0)" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="fa-solid fa-folder-open"></i><b>A</b></span>
+                        <span class="pcoded-mtext">Master Data</span>
+                        <span class="pcoded-mcaret"></span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                         <li class="">
+                            <a href="{{ route('users.index') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-micon"><i class="fa-solid fa-users-gear"></i></span>
+                                <span class="pcoded-mtext text-capitalize">pengguna</span>
+                                <span class="pcoded-mcaret"></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="{{ route('pegawai.index') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-micon"><i class="fa-solid fa-user-gear"></i></span>
+                                <span class="pcoded-mtext text-capitalize">pegawai</span>
+                                <span class="pcoded-mcaret"></span>
+                            </a>
+                        </li>
+                         <li class="">
+                            <a href="{{ route('mahasiswa.index') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-micon"><i class="fa-solid fa-users-gear"></i></span>
+                                <span class="pcoded-mtext text-capitalize">mahasiswa</span>
+                                <span class="pcoded-mcaret"></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="{{ route('jenissk.index') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-micon"><i class="fa-solid fa-users-gear"></i></span>
+                                <span class="pcoded-mtext text-capitalize">jenis SK</span>
+                                <span class="pcoded-mcaret"></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="{{ route('tahunAkademik.index') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-micon"><i class="fa-solid fa-calendar-days"></i></span>
+                                <span class="pcoded-mtext">tahun akademik</span>
+                                <span class="pcoded-mcaret"></span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="{{ route('programStudi.index') }}" class="waves-effect waves-dark">
+                                <span class="pcoded-micon"><i class="fa-solid fa-folder-closed"></i></span>
+                                <span class="pcoded-mtext text-capitalize">program studi</span>
+                                <span class="pcoded-mcaret"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        @endif
+
+        {{-- @if (Auth::user()->is_admin)
+        <div class="pcoded-navigation-label">Forms</div>
         <ul class="pcoded-item pcoded-left-item">
             <li class="">
                 <a href="{{ route('tahunAkademik.index') }}" class="waves-effect waves-dark">
@@ -143,7 +201,7 @@
                 </a>
             </li>
         </ul>
-        {{-- <div class="pcoded-navigation-label">Tables</div> --}}
+        <div class="pcoded-navigation-label">Tables</div>
         <ul class="pcoded-item pcoded-left-item">
             <li class="">
                 <a href="{{ route('users.index') }}" class="waves-effect waves-dark">
@@ -180,7 +238,7 @@
                 </a>
             </li>
         </ul>
-        @endif
+        @endif --}}
         {{-- <div class="pcoded-navigation-label">Chart And Maps</div> --}}
         {{-- <ul class="pcoded-item pcoded-left-item">
             <li class="">

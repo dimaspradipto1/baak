@@ -21,23 +21,23 @@
                 },
                 {
                     data: 'nama_sk',
-                    name: 'nama sk',
+                    name: 'nama_sk',
                     width: '20%',
                     class: 'text-wrap'
                 },
                 {
                     data: 'nomor_sk',
-                    name: 'nomor sk',
-                    width: '20%'
-                },
-                {
-                    data: 'jenis_sk',
-                    name: 'jenis sk',
+                    name: 'nomor_sk',
                     width: '20%'
                 },
                 {
                     data: 'prodi',
                     name: 'prodi',
+                    width: '20%'
+                },
+                {
+                    data: 'jenissk_id',
+                    name: 'jenissk_id',
                     width: '20%'
                 },
                 {
@@ -65,7 +65,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <a href="{{ route('kepanitiaan.create') }}" class="btn btn-primary rounded btn-sm"><i class="fa-solid fa-plus"></i> Tambah</a>
+        <a href="{{ route('sk.create') }}" class="btn btn-primary rounded btn-sm"><i class="fa-solid fa-plus"></i> Tambah</a>
         <div class="card-header-right">
             <ul class="list-unstyled card-option">
                 <li><i class="fa fa fa-wrench open-card-option"></i></li>
@@ -85,8 +85,8 @@
                         <th>TAHUN AKADEMIK</th>
                         <th>NAMA SK</th>
                         <th>NOMOR SK</th>
-                        <th>JENIS SK</th>
                         <th>PRODI</th>
+                        <th>JENIS SK</th>
                         <th>DOKUMEN</th>
                         <th>SUBMITTED BY</th>
                         <th>AKSI</th>

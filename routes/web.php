@@ -2,8 +2,10 @@
 
 use App\Http\Middleware\Checkrole;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SKController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\JenisskController;
 use App\Http\Controllers\PedomanController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\DahsboardController;
@@ -33,10 +35,12 @@ Route::middleware(['auth', 'checkrole'])->group(function(){
     Route::resource('tahunAkademik', TahunAkademikController::class);
     Route::resource('mahasiswa', MahasiswaController::class);
     Route::resource('programStudi', ProgramStudiController::class);
+    Route::resource('jenissk', JenisskController::class);
     Route::resource('pegawai', PegawaiController::class);
     Route::resource('suratAktif', SuratAktifController::class);
     Route::resource('suratAkademik', SuratAkademikController::class);
     Route::resource('sopAkademik', SOPAkademikController::class);
     Route::resource('kepanitiaan', KepanitiaanController::class);
     Route::resource('pedoman', PedomanController::class);
+    Route::resource('sk', SKController::class);
 });
