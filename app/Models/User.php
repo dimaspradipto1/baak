@@ -76,4 +76,9 @@ class User extends Authenticatable
         return $this->hasMany(Pedoman::class);
     }
 
+    public function kurikulum()
+    {
+        return $this->hasMany(Kurikulum::class);
+    }
+
 }
