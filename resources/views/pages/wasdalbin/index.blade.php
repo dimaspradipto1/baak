@@ -15,25 +15,16 @@
                     class: 'text-center'
                 },
                 {
-                    data: 'tahun_akademik_id',
-                    name: 'tahun akademik',
-                    width: '20%'
+                    data: 'tahun',
+                    name: 'tahun',
+                    width: '20%',
+                    class: 'text-center'
                 },
                 {
-                    data: 'nama_dokumen',
-                    name: 'nama dokumen',
+                    data: 'nama_wasdalbin',
+                    name: 'nama_wasdalbin',
                     width: '20%',
                     class: 'text-wrap'
-                },
-                {
-                    data: 'ketua',
-                    name: 'ketua',
-                    width: '20%'
-                },
-                {
-                    data: 'sekretaris',
-                    name: 'sekretaris',
-                    width: '20%'
                 },
                 {
                     data: 'prodi',
@@ -65,7 +56,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <a href="{{ route('kepanitiaan.create') }}" class="btn btn-primary rounded btn-sm"><i class="fa-solid fa-plus"></i> Tambah</a>
+        <a href="{{ route('wasdalbin.create') }}" class="btn btn-primary rounded btn-sm"><i class="fa-solid fa-plus"></i> Tambah</a>
         <div class="card-header-right">
             <ul class="list-unstyled card-option">
                 <li><i class="fa fa fa-wrench open-card-option"></i></li>
@@ -82,10 +73,8 @@
                 <thead>
                     <tr>
                         <th>NO</th>
-                        <th>TAHUN AKADEMIK</th>
-                        <th>NAMA LPJ</th>
-                        <th>KETUA</th>
-                        <th>SEKRETARIS</th>
+                        <th class="text-center">TAHUN</th>
+                        <th>NAMA WASDALBIN</th>
                         <th>PRODI</th>
                         <th>DOKUMEN</th>
                         <th>SUBMITTED BY</th>

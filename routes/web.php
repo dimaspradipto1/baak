@@ -11,6 +11,7 @@ use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\DahsboardController;
 use App\Http\Controllers\KurikulumController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\WasdalbinController;
 use App\Http\Controllers\SuratAktifController;
 use App\Http\Controllers\KepanitiaanController;
 use App\Http\Controllers\SOPAkademikController;
@@ -45,4 +46,5 @@ Route::middleware(['auth', 'checkrole'])->group(function(){
     Route::resource('pedoman', PedomanController::class);
     Route::resource('sk', SKController::class);
     Route::resource('kurikulum', KurikulumController::class);
+    Route::resource('wasdalbin', WasdalbinController::class);
 });

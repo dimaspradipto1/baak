@@ -10,7 +10,7 @@
                 </div>
                 <div class="card-block">
                     <h4 class="sub-title">Form Inputs</h4>
-                    <form action="{{ route('kepanitiaan.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('kepanitiaan.update', $kepanitiaan->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <!-- Nama SOP -->
@@ -18,7 +18,7 @@
                             <label class="col-sm-2 col-form-label">Tahun Akademik</label>
                             <div class="col-sm-10">
                                <select name="tahun_akademik_id" class="form-control rounded" required>
-                                   <option value="">Pilih Tahun Akademik</option>
+                                   <option value="">Pilih TahunAkademik</option>
                                    <option value="">=====================</option>
                                    @foreach ($tahunAkademik as $item)
                                        <option value="{{ $item->id }}">{{ $item->tahun_akademik }}</option>
@@ -30,14 +30,14 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Nama LPJ</label>
                             <div class="col-sm-10">
-                                <textarea name="nama_dokumen" class="form-control rounded" id="" cols="30" rows="3">{{ old('nama_dokumen') }}</textarea>
+                                <textarea name="nama_dokumen" class="form-control rounded" id="" cols="30" rows="3">{{ old('nama_dokumen', $kepanitiaan->nama_dokumen) }}</textarea>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Nama Ketua</label>
                             <div class="col-sm-10">
-                                <input type="text" name="ketua" value="{{ old('ketua') }}"
+                                <input type="text" name="ketua" value="{{ old('ketua', $kepanitiaan->ketua) }}"
                                     class="form-control rounded" placeholder="Masukkan nama ketua" required>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Nama Sekretaris umum</label>
                             <div class="col-sm-10">
-                                <input type="text" name="sekretaris" value="{{ old('sekretaris') }}"
+                                <input type="text" name="sekretaris" value="{{ old('sekretaris', $kepanitiaan->sekretaris) }}"
                                     class="form-control rounded" placeholder="Masukkan nama sekretaris" required>
                             </div>
                         </div>

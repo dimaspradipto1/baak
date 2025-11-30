@@ -81,4 +81,9 @@ class User extends Authenticatable
         return $this->hasMany(Kurikulum::class);
     }
 
+    public function wasdalbin()
+    {
+        return $this->hasMany(Wasdalbin::class);
+    }
+
 }
