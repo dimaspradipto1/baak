@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('nama_sk');
             $table->string('nomor_sk');
             $table->string('prodi');
-            $table->string('file');
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }

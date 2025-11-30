@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('tahun');
             $table->string('nama_wasdalbin');
             $table->string('prodi');
-            $table->string('file');
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }

@@ -12,8 +12,8 @@
                     <h4 class="sub-title">Form Inputs</h4>
                     <form action="{{ route('kepanitiaan.update', $kepanitiaan->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
 
-                        <!-- Nama SOP -->
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Tahun Akademik</label>
                             <div class="col-sm-10">
@@ -21,7 +21,7 @@
                                    <option value="">Pilih TahunAkademik</option>
                                    <option value="">=====================</option>
                                    @foreach ($tahunAkademik as $item)
-                                       <option value="{{ $item->id }}">{{ $item->tahun_akademik }}</option>
+                                       <option value="{{ $item->id }}" {{ old('tahun_akademik_id', $kepanitiaan->tahun_akademik_id) == $item->id ? 'selected' : '' }}>{{ $item->tahun_akademik }}</option>
                                    @endforeach
                                </select>
                             </div>
@@ -50,15 +50,14 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Program Studi</label>
                             <div class="col-sm-10">
-                               <select name="prodi" id="prodi" class="form-control rounded" required>
+                               <select name="prodi" class="form-control rounded" required>
                                    <option value="">Pilih Program Studi</option>
-                                   <option value="">=====================</option>
-                                   <option value="Fakultas Ekonomi dan Bisnis" {{ old('prodi') == 'Fakultas Ekonomi dan Bisnis' ? 'selected' : '' }}>Fakultas Ekonomi dan Bisnis</option>
-                                   <option value="Fakultas Sains dan Teknologi" {{ old('prodi') == 'Fakultas Sains dan Teknologi' ? 'selected' : '' }}>Fakultas Sains dan Teknologi</option>
-                                   <option value="Fakultas Ilmu Kesehatan" {{ old('prodi') == 'Fakultas Ilmu Kesehatan' ? 'selected' : '' }}>Fakultas Ilmu Kesehatan</option>
+                                   <option value="Fakultas Ekonomi dan Bisnis" {{ old('prodi', $kepanitiaan->prodi) == 'Fakultas Ekonomi dan Bisnis' ? 'selected' : '' }}>Fakultas Ekonomi dan Bisnis</option>
+                                   <option value="Fakultas Sains dan Teknologi" {{ old('prodi', $kepanitiaan->prodi) == 'Fakultas Sains dan Teknologi' ? 'selected' : '' }}>Fakultas Sains dan Teknologi</option>
+                                   <option value="Fakultas Ilmu Kesehatan" {{ old('prodi', $kepanitiaan->prodi) == 'Fakultas Ilmu Kesehatan' ? 'selected' : '' }}>Fakultas Ilmu Kesehatan</option>
                                </select>
                             </div>
                         </div>
@@ -66,7 +65,7 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Upload Dokumen</label>
                             <div class="col-sm-10">
-                                <input type="file" name="file" class="form-control rounded" id="file-input" required>
+                                <input type="file" name="file" class="form-control rounded" id="file-input">
                             </div>
                         </div>
 

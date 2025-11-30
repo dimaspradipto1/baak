@@ -34,6 +34,9 @@ class KepanitiaanController extends Controller
                 })
             ->addColumn('action', function ($item) {
                 return '
+                    <a href="' . route('kepanitiaan.edit', $item->id) . '" class="btn btn-warning btn-sm px-3 rounded" title="edit">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a>
                     <form action="' . route('kepanitiaan.destroy', $item->id) . '" method="POST" class="d-inline">
                         ' . csrf_field() . '
                         ' . method_field('delete') . '
@@ -118,16 +121,95 @@ class KepanitiaanController extends Controller
      */
     public function edit(Kepanitiaan $kepanitiaan)
     {
-        //
+        $tahunAkademik = TahunAkademik::all();
+        return view('pages.kepanitiaan.edit', compact('kepanitiaan', 'tahunAkademik'));
     }
 
     /**
      * Update the specified resource in storage.
      */
+    // public function update(Request $request, Kepanitiaan $kepanitiaan)
+    // {
+    //     if ($request->hasFile('file')) {
+
+    //         $fileName = time() . '.' . $request->file('file')->extension();
+
+    //         $path = $request->file('file')->move(public_path('storage/SKKepanitiaan'), $fileName);
+
+    //         if (!$path) {
+    //             return back()->withErrors(['file' => 'Failed to store the file']);
+    //         }
+
+    //         $fileUrl = 'storage/SKKepanitiaan/' . $fileName;
+    //     } else {
+    //         $fileUrl = null;
+    //     }
+
+    //     $kepanitiaan->update([
+    //         'tahun_akademik_id' => $request->tahun_akademik_id,
+    //         'nama_dokumen' => $request->nama_dokumen,
+    //         'ketua' => $request->ketua,
+    //         'sekretaris' => $request->sekretaris,
+    //         'prodi' => $request->prodi,
+    //         'file'     => $fileUrl,
+    //         'users_id' => Auth::id(),
+    //     ]);
+
+    //     Alert::success('Success', 'Data updated successfully')
+    //         ->autoclose(3000)
+    //         ->toToast()
+    //         ->timerProgressBar();
+
+    //     return redirect()->route('kepanitiaan.index');
+    // }
+
     public function update(Request $request, Kepanitiaan $kepanitiaan)
-    {
-        //
+{
+    // Check if a new file is uploaded
+    if ($request->hasFile('file')) {
+        // Generate a new file name and move the uploaded file to storage
+        $fileName = time() . '.' . $request->file('file')->extension();
+        $path = $request->file('file')->move(public_path('storage/SKKepanitiaan'), $fileName);
+
+        if (!$path) {
+            return back()->withErrors(['file' => 'Failed to store the file']);
+        }
+
+        // Set the file URL to the new file's path
+        $fileUrl = 'storage/SKKepanitiaan/' . $fileName;
+
+        // If there is an old file, delete it from storage
+        if ($kepanitiaan->file) {
+            $oldFilePath = public_path($kepanitiaan->file);
+            if (file_exists($oldFilePath)) {
+                unlink($oldFilePath); // Delete the old file
+            }
+        }
+    } else {
+        // If no new file is uploaded, retain the old file's URL
+        $fileUrl = $kepanitiaan->file;
     }
+
+    // Update the Kepanitiaan data
+    $kepanitiaan->update([
+        'tahun_akademik_id' => $request->tahun_akademik_id,
+        'nama_dokumen' => $request->nama_dokumen,
+        'ketua' => $request->ketua,
+        'sekretaris' => $request->sekretaris,
+        'prodi' => $request->prodi,
+        'file' => $fileUrl,  // Store the new or old file URL
+        'users_id' => Auth::id(),
+    ]);
+
+    // Success message
+    Alert::success('Success', 'Data updated successfully')
+        ->autoclose(3000)
+        ->toToast()
+        ->timerProgressBar();
+
+    return redirect()->route('kepanitiaan.index');
+}
+
 
     /**
      * Remove the specified resource from storage.

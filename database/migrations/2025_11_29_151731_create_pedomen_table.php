@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('users_id')->constrained()->cascadeOnDelete();
             $table->string('tahun');
             $table->string('nama_pedoman');
-            $table->string('file');
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }

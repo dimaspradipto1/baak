@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('ketua');
             $table->string('sekretaris');
             $table->string('prodi');
-            $table->string('file');
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }
