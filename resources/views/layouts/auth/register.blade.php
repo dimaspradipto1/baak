@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Login - {{ env('APP_NAME') }}</title>
+    <title>Register - {{ env('APP_NAME') }}</title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -91,7 +91,7 @@
                 <div class="col-sm-12">
                     <!-- Authentication card start -->
 
-                    <form class="md-float-material form-material" action="{{ route('loginproses') }}" method="post">
+                    <form class="md-float-material form-material" action="{{ route('registerproses') }}" method="post">
                         @csrf
 
                         <div class="text-center">
@@ -105,18 +105,29 @@
                                     </div>
                                 </div>
                                 <div class="form-group form-primary">
-                                    <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
+                                    <input type="text" name="name" class="form-control" value="{{ old('name') }}" required>
                                     <span class="form-bar"></span>
-                                    <label class="float-label">Your Email Address</label>
-                                    @error('email') 
+                                    <label class="float-label">Nama Lengkap</label>
+                                    @error('name') 
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
+                                <div class="form-group form-primary">
+                                    <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
+                                    <span class="form-bar"></span>
+                                    <label class="float-label">Email UIS</label>
+                                    @error('email') 
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>`
 
                                 <div class="form-group form-primary">
                                     <input type="password" id="password" name="password" class="form-control" value="{{ old('password') }}" required>
                                     <span class="form-bar"></span>
                                     <label class="float-label">Password</label>
+                                    @error('password') 
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="row m-t-25 text-left">
                                     <div class="col-12">
@@ -133,11 +144,11 @@
                                 </div>
                                 <div class="row m-t-30">
                                     <div class="col-md-12">
-                                        <button type="submit" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">Sign in</button>
+                                        <button type="submit" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">Register</button>
                                     </div>
                                 </div>
                                 <hr />
-                                <p>Don't have an account? <a href="{{ route('register') }}" class="text-primary">Register</a></p>
+                                <p>Don't have an account? <a href="{{ route('login') }}" class="text-primary">Sign in</a></p>
                             </div>
                         </div>
                     </form>

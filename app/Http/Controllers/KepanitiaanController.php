@@ -66,26 +66,18 @@ class KepanitiaanController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'tahun_akademik_id' => 'required',
-            'nama_dokumen' => 'required',
-            'ketua' => 'required',
-            'sekretaris' => 'required',
-            'prodi' => 'required',
-            'file'     => 'required|file',
-        ]);
 
         if ($request->hasFile('file')) {
 
             $fileName = time() . '.' . $request->file('file')->extension();
 
-            $path = $request->file('file')->move(public_path('storage/SKKepanitiaan'), $fileName);
+            $path = $request->file('file')->move(public_path('storage/LPJKepanitiaan'), $fileName);
 
             if (!$path) {
                 return back()->withErrors(['file' => 'Failed to store the file']);
             }
 
-            $fileUrl = 'storage/SKKepanitiaan/' . $fileName;
+            $fileUrl = 'storage/LPJKepanitiaan/' . $fileName;
         } else {
             $fileUrl = null;
         }
@@ -135,14 +127,14 @@ class KepanitiaanController extends Controller
         if ($request->hasFile('file')) {
             // Generate a new file name and move the uploaded file to storage
             $fileName = time() . '.' . $request->file('file')->extension();
-            $path = $request->file('file')->move(public_path('storage/SKKepanitiaan'), $fileName);
+            $path = $request->file('file')->move(public_path('storage/LPJKepanitiaan'), $fileName);
 
             if (!$path) {
                 return back()->withErrors(['file' => 'Failed to store the file']);
             }
 
             // Set the file URL to the new file's path
-            $fileUrl = 'storage/SKKepanitiaan/' . $fileName;
+            $fileUrl = 'storage/LPJKepanitiaan/' . $fileName;
 
             // If there is an old file, delete it from storage
             if ($kepanitiaan->file) {

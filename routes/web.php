@@ -22,6 +22,7 @@ use App\Http\Controllers\TahunAkademikController;
 Route::controller(LoginController::class)->group(function(){
     Route::get('/', 'login')->name('login');
     Route::post('/loginproses', 'loginproses')->name('loginproses');
+    Route::post('/registerproses', 'registerproses')->name('registerproses');
     Route::get('/logout', 'logout')->name('logout');
     Route::get('/register', 'register')->name('register');
     

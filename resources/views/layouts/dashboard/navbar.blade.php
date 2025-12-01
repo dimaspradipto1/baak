@@ -39,7 +39,7 @@
                 </li>
             </ul>
             <ul class="nav-right">
-                <li class="header-notification">
+                {{-- <li class="header-notification">
                     <a href="#!" class="waves-effect waves-light">
                         <i class="ti-bell"></i>
                         <span class="badge bg-c-red"></span>
@@ -86,7 +86,7 @@
                             </div>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 <li class="user-profile header-notification">
                     <a href="#!" class="waves-effect waves-light">
                         <img src="{{ asset('dashboard/assets/images/avatar-4.jpg') }}" class="img-radius"
@@ -105,10 +105,6 @@
                                 <i class="ti-user"></i> Profile
                             </a>
                         </li>
-                        <li class="waves-effect waves-light">
-                            <a href="#">
-                                <i class="ti-email"></i> My Messages
-                            </a>
                         <li class="waves-effect waves-light">
                             <a href="{{ route('logout') }}">
                                 <i class="ti-layout-sidebar-left"></i> Logout

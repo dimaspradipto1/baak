@@ -27,13 +27,14 @@ class LoginController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:8|confirmed',
+            'password' => 'required',
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'is_mahasiswa' => 1,
         ]);
 
         Auth::login($user);
@@ -41,8 +42,10 @@ class LoginController extends Controller
             ->autoclose(2000)
             ->toToast()
             ->timerProgressBar();
-        return redirect()->route('dashboard');
+        // return redirect()->route('dashboard');
+        return redirect()->route('mahasiswa.create');
     }
+
 
     public function loginproses(LoginRequest $request)
     {
