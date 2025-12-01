@@ -32,6 +32,9 @@ class KurikulumController extends Controller
                 })
             ->addColumn('action', function ($item) {
                 return '
+                    <a href="' . route('kurikulum.edit', $item->id) . '" class="btn btn-warning btn-sm px-3 rounded" title="edit">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a>
                     <form action="' . route('kurikulum.destroy', $item->id) . '" method="POST" class="d-inline">
                         ' . csrf_field() . '
                         ' . method_field('delete') . '
@@ -104,7 +107,8 @@ class KurikulumController extends Controller
      */
     public function edit(Kurikulum $kurikulum)
     {
-        //
+        $users = User::all();
+        return view('pages.kurikulum.edit', compact('kurikulum', 'users'));
     }
 
     /**
@@ -112,7 +116,40 @@ class KurikulumController extends Controller
      */
     public function update(Request $request, Kurikulum $kurikulum)
     {
-        //
+        if ($request->hasFile('file')) {
+            $fileName = time() . '.' . $request->file('file')->extension();
+            $path = $request->file('file')->move(public_path('storage/kurikulum'), $fileName);
+
+            if (!$path) {
+                return back()->withErrors(['file' => 'Failed to store the file']);
+            }
+
+            $fileUrl = 'storage/kurikulum/' . $fileName;
+
+            if ($kurikulum->file) {
+                $oldFilePath = public_path($kurikulum->file);
+                if (file_exists($oldFilePath)) {
+                    unlink($oldFilePath);
+                }
+            }
+        } else {
+            $fileUrl = $kurikulum->file;
+        }
+
+        $kurikulum->update([
+            'tahun' => $request->tahun,
+            'nama_kurikulum' => $request->nama_kurikulum,
+            'prodi' => $request->prodi,
+            'file' => $fileUrl,
+            'users_id' => Auth::id(),
+        ]);
+
+        Alert::success('Success', 'Data updated successfully')
+            ->autoclose(3000)
+            ->toToast()
+            ->timerProgressBar();
+
+        return redirect()->route('kurikulum.index');
     }
 
     /**

@@ -41,7 +41,7 @@ Route::middleware(['auth', 'checkrole'])->group(function(){
     Route::resource('pegawai', PegawaiController::class);
     Route::resource('suratAktif', SuratAktifController::class);
     Route::resource('suratAkademik', SuratAkademikController::class);
-    Route::resource('sopAkademik', SOPAkademikController::class);
+    Route::resource('SOPAkademik', SOPAkademikController::class);
     Route::resource('kepanitiaan', KepanitiaanController::class);
     Route::resource('pedoman', PedomanController::class);
     Route::resource('sk', SKController::class);

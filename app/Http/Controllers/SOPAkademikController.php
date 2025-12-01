@@ -19,15 +19,16 @@ class SOPAkademikController extends Controller
     {
         if (request()->ajax()) {
 
-            // LOAD RELASI user SEKALIGUS
-            $sopAkademik = SOPAkademik::with('user');
+            // // LOAD RELASI user SEKALIGUS
+            // $sopAkademik = SOPAkademik::with('user');
 
-            // CEK ROLE USER
-            if (!Auth::user()->is_admin || !Auth::user()->is_staffbaak) {
-                // kalau bukan admin → filter by user login
-                $sopAkademik = $sopAkademik->where('users_id', Auth::id());
-            }
+            // // CEK ROLE USER
+            // if (!Auth::user()->is_admin || !Auth::user()->is_staffbaak) {
+            //     // kalau bukan admin → filter by user login
+            //     $sopAkademik = $sopAkademik->where('users_id', Auth::id());
+            // }
 
+            $sopAkademik = SOPAkademik::all();
             return DataTables::of($sopAkademik)
                 ->addIndexColumn()
                 ->editColumn('users_id', function ($item) {
@@ -41,7 +42,10 @@ class SOPAkademikController extends Controller
                 })
                 ->addColumn('action', function ($item) {
                     return '
-                    <form action="' . route('sopAkademik.destroy', $item->id) . '" method="POST" class="d-inline">
+                    <a href="' . route('SOPAkademik.edit', $item->id) . '" class="btn btn-warning btn-sm px-3 rounded" title="edit">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a>
+                    <form action="' . route('SOPAkademik.destroy', $item->id) . '" method="POST" class="d-inline">
                         ' . csrf_field() . '
                         ' . method_field('delete') . '
                         <button type="submit" class="btn btn-danger btn-sm px-3 rounded" title="hapus">
@@ -54,7 +58,7 @@ class SOPAkademikController extends Controller
                 ->make(true);
         }
 
-        return view('pages.sopAkademik.index');
+        return view('pages.SOPAkademik.index');
     }
 
     /**
@@ -62,7 +66,7 @@ class SOPAkademikController extends Controller
      */
     public function create()
     {
-        return view('pages.sopAkademik.create');
+        return view('pages.SOPAkademik.create');
     }
 
     /**
@@ -70,22 +74,18 @@ class SOPAkademikController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'nama_sop' => 'required|string',
-            'file'     => 'required|file',
-        ]);
 
         if ($request->hasFile('file')) {
 
             $fileName = time() . '.' . $request->file('file')->extension();
 
-            $path = $request->file('file')->move(public_path('storage/sopAkademik'), $fileName);
+            $path = $request->file('file')->move(public_path('storage/SOPAkademik'), $fileName);
 
             if (!$path) {
                 return back()->withErrors(['file' => 'Failed to store the file']);
             }
 
-            $fileUrl = 'storage/sopAkademik/' . $fileName;
+            $fileUrl = 'storage/SOPAkademik/' . $fileName;
         } else {
             $fileUrl = null;
         }
@@ -100,7 +100,7 @@ class SOPAkademikController extends Controller
             ->autoclose(3000)
             ->toToast();
 
-        return redirect()->route('sopAkademik.index');
+        return redirect()->route('SOPAkademik.index');
     }
 
 
@@ -115,17 +115,55 @@ class SOPAkademikController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(SOPAkademik $sOPAkademik)
+    public function edit(SOPAkademik $SOPAkademik)
     {
-        //
+        return view('pages.SOPAkademik.edit', compact('SOPAkademik'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, SOPAkademik $sOPAkademik)
+    public function update(Request $request, SOPAkademik $SOPAkademik)
     {
-        //
+        // Check if a new file is uploaded
+        if ($request->hasFile('file')) {
+            // Generate a new file name and move the uploaded file to storage
+            $fileName = time() . '.' . $request->file('file')->extension();
+            $path = $request->file('file')->move(public_path('storage/SOPAkademik'), $fileName);
+
+            if (!$path) {
+                return back()->withErrors(['file' => 'Failed to store the file']);
+            }
+
+            // Set the file URL to the new file's path
+            $fileUrl = 'storage/SOPAkademik/' . $fileName;
+
+            // If there is an old file, delete it from storage
+            if ($SOPAkademik->file) {
+                $oldFilePath = public_path($SOPAkademik->file);
+                if (file_exists($oldFilePath)) {
+                    unlink($oldFilePath); // Delete the old file
+                }
+            }
+        } else {
+            // If no new file is uploaded, retain the old file's URL
+            $fileUrl = $SOPAkademik->file;
+        }
+
+        // Update the SOP Akademik data
+        $SOPAkademik->update([
+            'nama_sop' => $request->nama_sop,
+            'file'     => $fileUrl,  // Store the new or old file URL
+            'users_id' => Auth::id(),
+        ]);
+
+        // Success message
+        Alert::success('Success', 'Data updated successfully')
+            ->autoclose(3000)
+            ->toToast()
+            ->timerProgressBar();
+
+        return redirect()->route('SOPAkademik.index');
     }
 
     /**
@@ -133,24 +171,24 @@ class SOPAkademikController extends Controller
      */
     public function destroy($id)
     {
-        $sopAkademik = SOPAkademik::findOrFail($id);
+        $SOPAkademik = SOPAkademik::findOrFail($id);
 
         // Hapus file fisik kalau ada
-        if ($sopAkademik->file) {
-            $fullPath = public_path($sopAkademik->file);
+        if ($SOPAkademik->file) {
+            $fullPath = public_path($SOPAkademik->file);
 
             if (File::exists($fullPath)) {
                 File::delete($fullPath);
             }
         }
 
-        $sopAkademik->delete();
+        $SOPAkademik->delete();
 
         Alert::success('Success', 'Data and file deleted successfully')
             ->autoclose(3000)
             ->toToast()
             ->timerProgressBar();
 
-        return redirect()->route('sopAkademik.index');
+        return redirect()->route('SOPAkademik.index');
     }
 }

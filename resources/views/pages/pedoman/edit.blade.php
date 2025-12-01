@@ -6,36 +6,43 @@
             <!-- Basic Form Inputs card start -->
             <div class="card">
                 <div class="card-header">
-                    <h5>Form SOP Akademik</h5>
+                    <h5>Form Edit Pedoman</h5>
                 </div>
                 <div class="card-block">
                     <h4 class="sub-title">Form Inputs</h4>
-                    <form action="{{ route('SOPAkademik.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('pedoman.update', $pedoman->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
 
-                        <!-- Nama SOP -->
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Nama SOP</label>
+                            <label class="col-sm-2 col-form-label">Tahun</label>
                             <div class="col-sm-10">
-                                <input type="text" name="nama_sop" value="{{ old('nama_sop') }}"
-                                    class="form-control rounded" placeholder="Masukkan nama SOP" required>
+                                <input type="number" name="tahun" value="{{ old('tahun') ?? $pedoman->tahun }}"
+                                    class="form-control rounded" placeholder="Masukkan tahun" required>
                             </div>
                         </div>
 
-                        <!-- File SOP -->
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Upload SOP</label>
+                            <label class="col-sm-2 col-form-label">Nama Pedoman</label>
                             <div class="col-sm-10">
-                                <input type="file" name="file" class="form-control rounded" id="file-input" required>
+                                <input type="text" name="nama_pedoman" value="{{ old('nama_pedoman') ?? $pedoman->nama_pedoman }}"
+                                    class="form-control rounded" placeholder="Masukkan nama pedoman" required>
                             </div>
                         </div>
 
-                        <!-- Preview File -->
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Upload Dokumen</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="file" class="form-control rounded" id="file-input">
+                            </div>
+                        </div>
+
+                         <!-- Preview File -->
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Preview Dokumen</label>
                             <div class="col-sm-10">
                                 <div id="preview-container">
-                                    <!-- Placeholder for preview image or file -->
+                                   
                                 </div>
                             </div>
                         </div>
@@ -46,7 +53,7 @@
                         </button>
 
                         <!-- Back button -->
-                        <a href="{{ route('SOPAkademik.index') }}" class="btn btn-danger rounded text-uppercase btn-sm">
+                        <a href="{{ route('pedoman.index') }}" class="btn btn-danger rounded text-uppercase btn-sm">
                             <i class="fa-solid fa-arrow-left"></i> Back
                         </a>
                     </form>

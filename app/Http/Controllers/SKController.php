@@ -40,6 +40,9 @@ class SKController extends Controller
                 })
             ->addColumn('action', function ($item) {
                 return '
+                    <a href="' . route('sk.edit', $item->id) . '" class="btn btn-warning btn-sm px-3 rounded" title="edit">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a>
                     <form action="' . route('sk.destroy', $item->id) . '" method="POST" class="d-inline">
                         ' . csrf_field() . '
                         ' . method_field('delete') . '
@@ -114,17 +117,62 @@ class SKController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(SK $sK)
+    public function edit(SK $sk)
     {
-        //
+        $tahunAkademik = TahunAkademik::all();
+        $users = User::all();
+        $jenissks = Jenissk::all();
+        return view('pages.sk.edit', compact('sk', 'tahunAkademik', 'users', 'jenissks'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, SK $sK)
+    public function update(Request $request, SK $sk)
     {
-        //
+        // Check if a new file is uploaded
+        if ($request->hasFile('file')) {
+            // Generate a new file name and move the uploaded file to storage
+            $fileName = time() . '.' . $request->file('file')->extension();
+            $path = $request->file('file')->move(public_path('storage/sk'), $fileName);
+
+            if (!$path) {
+                return back()->withErrors(['file' => 'Failed to store the file']);
+            }
+
+            // Set the file URL to the new file's path
+            $fileUrl = 'storage/sk/' . $fileName;
+
+            // If there is an old file, delete it from storage
+            if ($sk->file) {
+                $oldFilePath = public_path($sk->file);
+                if (file_exists($oldFilePath)) {
+                    unlink($oldFilePath); // Delete the old file
+                }
+            }
+        } else {
+            // If no new file is uploaded, retain the old file's URL
+            $fileUrl = $sk->file;
+        }
+
+        // Update the Kepanitiaan data
+        $sk->update([
+            'tahun_akademik_id' => $request->tahun_akademik_id,
+            'jenissk_id' => $request->jenissk_id,
+            'nama_sk' => $request->nama_sk,
+            'nomor_sk' => $request->nomor_sk,
+            'prodi' => $request->prodi,
+            'file'     => $fileUrl,
+            'users_id' => Auth::id(),
+        ]);
+
+        // Success message
+        Alert::success('Success', 'Data updated successfully')
+            ->autoclose(3000)
+            ->toToast()
+            ->timerProgressBar();
+
+        return redirect()->route('sk.index');  
     }
 
     /**
