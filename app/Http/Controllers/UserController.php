@@ -96,7 +96,6 @@ class UserController extends Controller
             // role flags (boleh lebih dari satu, sama seperti update)
             'is_admin'      => $request->has('is_admin') ? 1 : 0,
             'is_mahasiswa'  => $request->has('is_mahasiswa') ? 1 : 0,
-            'is_operator'   => $request->has('is_operator') ? 1 : 0,
             'is_tata_usaha' => $request->has('is_tata_usaha') ? 1 : 0,
             'is_approval'   => $request->has('is_approval') ? 1 : 0,
             'is_staffbaak'  => $request->has('is_staffbaak') ? 1 : 0,
@@ -138,7 +137,6 @@ class UserController extends Controller
         $user->update([
             'is_admin' => $request->has('is_admin') ? 1 : 0,
             'is_mahasiswa' => $request->has('is_mahasiswa') ? 1 : 0,
-            'is_operator' => $request->has('is_operator') ? 1 : 0,
             'is_tata_usaha' => $request->has('is_tata_usaha') ? 1 : 0,
             'is_approval' => $request->has('is_approval') ? 1 : 0,
         ]);

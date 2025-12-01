@@ -44,10 +44,6 @@
                                     <label class="form-check-label" for="is_admin">Admin</label>
                                 </div>
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" name="is_operator" id="is_operator" {{ old('is_operator') ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="is_operator">Operator</label>
-                                </div>
-                                <div class="form-check">
                                     <input type="checkbox" class="form-check-input" name="is_mahasiswa" id="is_mahasiswa" {{ old('is_mahasiswa') ? 'checked' : '' }}>
                                     <label class="form-check-label" for="is_mahasiswa">Mahasiswa</label>
                                 </div>
