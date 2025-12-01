@@ -31,6 +31,9 @@ class WasdalbinController extends Controller
                 })
             ->addColumn('action', function ($item) {
                 return '
+                <a href="' . route('wasdalbin.edit', $item->id) . '" class="btn btn-warning btn-sm px-3 rounded" title="edit">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </a>
                     <form action="' . route('wasdalbin.destroy', $item->id) . '" method="POST" class="d-inline">
                         ' . csrf_field() . '
                         ' . method_field('delete') . '
@@ -103,7 +106,7 @@ class WasdalbinController extends Controller
      */
     public function edit(Wasdalbin $wasdalbin)
     {
-        //
+        return view('pages.wasdalbin.edit', compact('wasdalbin'));
     }
 
     /**
@@ -111,7 +114,47 @@ class WasdalbinController extends Controller
      */
     public function update(Request $request, Wasdalbin $wasdalbin)
     {
-        //
+        // Check if a new file is uploaded
+        if ($request->hasFile('file')) {
+            // Generate a new file name and move the uploaded file to storage
+            $fileName = time() . '.' . $request->file('file')->extension();
+            $path = $request->file('file')->move(public_path('storage/wasdalbin'), $fileName);
+
+            if (!$path) {
+                return back()->withErrors(['file' => 'Failed to store the file']);
+            }
+
+            // Set the file URL to the new file's path
+            $fileUrl = 'storage/wasdalbin/' . $fileName;
+
+            // If there is an old file, delete it from storage
+            if ($wasdalbin->file) {
+                $oldFilePath = public_path($wasdalbin->file);
+                if (file_exists($oldFilePath)) {
+                    unlink($oldFilePath); // Delete the old file
+                }
+            }
+        } else {
+            // If no new file is uploaded, retain the old file's URL
+            $fileUrl = $wasdalbin->file;
+        }
+
+        // Update the Kepanitiaan data
+        $wasdalbin->update([
+            'tahun' => $request->tahun,
+            'nama_wasdalbin' => $request->nama_wasdalbin,
+            'prodi' => $request->prodi,
+            'file' => $fileUrl,  // Store the new or old file URL
+            'users_id' => Auth::id(),
+        ]);
+
+        // Success message
+        Alert::success('Success', 'Data updated successfully')
+            ->autoclose(3000)
+            ->toToast()
+            ->timerProgressBar();
+
+        return redirect()->route('wasdalbin.index');
     }
 
     /**
