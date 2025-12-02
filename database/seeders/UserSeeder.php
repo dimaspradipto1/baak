@@ -41,6 +41,18 @@ class UserSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'name' => 'Staff BAAK',
+                'email' => 'baak@gmail.com',
+                'password' => Hash::make('password'),
+                'is_admin' => false,
+                'is_staffbaak' => true,
+                'is_mahasiswa' => false,
+                'is_tata_usaha' => false,
+                'is_approval' => false,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
                 'name' => 'Mahasiswa',
                 'email' => 'mahasiswa@gmail.com',
                 'password' => Hash::make('password'),
