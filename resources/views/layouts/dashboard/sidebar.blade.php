@@ -41,7 +41,7 @@
             </li>
         </ul>
 
-        @if (Auth::user()->is_admin || Auth::user()->is_mahasiswa)
+        @if (Auth::user()->is_admin || Auth::user()->is_mahasiswa || Auth::user()->is_staffbaak)
             {{-- <div class="pcoded-navigation-label">UI Element</div> --}}
             <ul class="pcoded-item pcoded-left-item">
                 <li class="pcoded-hasmenu">
